@@ -1,5 +1,12 @@
 import os, time, shutil, sys
 
+os.system("ln -s $PREFIX/glibc/opt/wine/bin/wine $PREFIX/glibc/bin/wine")
+os.system("ln -s $PREFIX/glibc/opt/wine/bin/wine64 $PREFIX/glibc/bin/wine64")
+os.system("ln -s $PREFIX/glibc/opt/wine/bin/wineserver $PREFIX/glibc/bin/wineserver")
+os.system("ln -s $PREFIX/glibc/opt/wine/bin/wineboot $PREFIX/glibc/bin/wineboot")
+os.system("ln -s $PREFIX/glibc/opt/wine/bin/winecfg $PREFIX/glibc/bin/winecfg")
+
+
 if not os.path.exists("/data/data/com.termux/files/usr/glibc/opt/wine"):  
     print("Downloading Wine 9.13 (WoW64)...")
     print("")  
@@ -8,8 +15,10 @@ if not os.path.exists("/data/data/com.termux/files/usr/glibc/opt/wine"):
     print("Unpacking Wine 9.13 (WoW64)...")
     os.system("tar -xf wine-9.13-glibc-amd64-wow64.tar.xz -C $PREFIX/glibc/opt")
     os.system("mv $PREFIX/glibc/opt/wine-git-8d25995-exp-wow64-amd64 $PREFIX/glibc/opt/wine")
-    os.system(r"unset LD_PRELOAD; export GLIBC_PREFIX=/data/data/com.termux/files/usr/glibc; export PATH=$GLIBC_PREFIX/bin:$PATH; cd ~/; git clone https://github.com/ptitSeb/box64; cd ~/box64; sed -i 's/\/usr/\/data\/data\/com.termux\/files\/usr\/glibc/g' CMakeLists.txt; sed -i 's/\/etc/\/data\/data\/com.termux\/files\/usr\/glibc\/etc/g' CMakeLists.txt; mkdir build; cd build; cmake --install-prefix $PREFIX/glibc .. -DARM_DYNAREC=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBAD_SIGNAL=ON -DSD845=ON; make -j8; make install; rm -rf ~/box64; cd ~/")
 
+os.system(r"cd $PREFIX/glibc/opt/wine/bin/; unset LD_PRELOAD; export GLIBC_PREFIX=/data/data/com.termux/files/usr/glibc; export PATH=$GLIBC_PREFIX/bin:$PATH; cd ~/; git clone https://github.com/ptitSeb/box64; cd ~/box64; sed -i 's/\/usr/\/data\/data\/com.termux\/files\/usr\/glibc/g' CMakeLists.txt; sed -i 's/\/etc/\/data\/data\/com.termux\/files\/usr\/glibc\/etc/g' CMakeLists.txt; mkdir build; cd build; cmake --install-prefix $PREFIX/glibc .. -DARM_DYNAREC=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBAD_SIGNAL=ON -DSD845=ON; make -j8; make install; rm -rf ~/box64; cd ~/")
+os.system("export GLIBC_PREFIX=/data/data/com.termux/files/usr/glibc")
+os.system("export PATH=$GLIBC_PREFIX/bin:$PATH")           
 os.system("box64 wineserver -k &>/dev/null")
 os.system("pkill -f pulseaudio && pkill -f 'app_process / com.termux.x11'")
     
@@ -51,6 +60,6 @@ os.system('pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127
 exec(open('/sdcard/Box64Droid (native)/Box64Droid.conf').read())
 exec(open('/sdcard/Box64Droid (native)/DXVK_D8VK_HUD.conf').read())
 
-os.system("taskset -c 4-7 box64 wine explorer /desktop=shell," + "800x600" + " $PREFIX/glibc/opt/autostart.bat &>/dev/null &")
+os.system("taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 $PREFIX/glibc/opt/autostart.bat &>/dev/null &")
 os.system("am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null")
 
