@@ -4,11 +4,11 @@ clear
 echo "Instalando dependencias"
 echo ""
 
-apt-get update &>/dev/null
-apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade &>/dev/null
-apt install python --no-install-recommends -y &>/dev/null
-pkg install x11-repo glibc-repo -y &>/dev/null
-pkg install pulseaudio wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends &>/dev/null
+apt-get update #&>/dev/null
+apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade #&>/dev/null
+apt install python --no-install-recommends -y #&>/dev/null
+pkg install x11-repo glibc-repo -y #&>/dev/null
+pkg install pulseaudio wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends #&>/dev/null
 
 echo "Instalando Glibc"
 echo ""
@@ -16,7 +16,6 @@ echo ""
 wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/glibc-prefix.tar.xz
 tar -xJf glibc-prefix.tar.xz -C $PREFIX/
 
-set -euo pipefail
 
 # Variáveis
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
@@ -48,26 +47,26 @@ fi
 
 # 3) Compilar o box64 no prefixo glibc
 (
-  cd "$OPT_DIR/wine/bin"
-  unset LD_PRELOAD
-  export GLIBC_PREFIX
-  export PATH="$GLIBC_PREFIX/bin:$PATH"
+    cd "$OPT_DIR/wine/bin"
+    unset LD_PRELOAD
+    export GLIBC_PREFIX
+    export PATH="$GLIBC_PREFIX/bin:$PATH"
 
-  cd "$HOME_DIR"
-  git clone https://github.com/ptitSeb/box64 box64-src
-  cd box64-src
-  sed -i 's/\/usr/\/data\/data\/com.termux\/files\/usr\/glibc/g' CMakeLists.txt
-  sed -i 's/\/etc/\/data\/data\/com.termux\/files\/usr\/glibc\/etc/g' CMakeLists.txt
-  mkdir -p build && cd build
-  cmake .. \
+    cd "$HOME_DIR"
+    git clone https://github.com/ptitSeb/box64 box64-src
+    cd box64-src
+    sed -i 's/\/usr/\/data\/data\/com.termux\/files\/usr\/glibc/g' CMakeLists.txt
+    sed -i 's/\/etc/\/data\/data\/com.termux\/files\/usr\/glibc\/etc/g' CMakeLists.txt
+    mkdir -p build && cd build
+    cmake .. \
     -DARM_DYNAREC=1 \
     -DCMAKE_INSTALL_PREFIX="$GLIBC_PREFIX" \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DBAD_SIGNAL=ON \
     -DSD845=ON
-  make -j8 && make install
-  cd "$HOME_DIR"
-  rm -rf box64-src
+    make -j8 && make install
+    cd "$HOME_DIR"
+    rm -rf box64-src
 )
 
 # 4) Atualizar variáveis de ambiente para esta sessão
@@ -124,11 +123,12 @@ echo "Starting Termux-X11..."
 termux-x11 :0 &>/dev/null &
 
 echo "Starting PulseAudio..."
-pulseaudio --start \
-  --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" \
-  --exit-idle-time=-1 &>/dev/null
+pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1 &>/dev/null
 
 # 9) Carregar configurações do usuário
+
+
+
 source "$CONFIG_DIR/Box64Droid.conf"
 source "$CONFIG_DIR/DXVK_D8VK_HUD.conf"
 
