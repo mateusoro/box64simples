@@ -127,10 +127,19 @@ pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth
 
 # 9) Carregar configurações do usuário
 
+import_python_conf(){
+  local file="$1"
+  # cada linha tipo: os.environ["NOME"]=valor
+  # converte em: export NOME="valor"
+  sed -En '
+    s|^.*\["([^"]+)"\]\s*=\s*"(.*)"$|export \1="\2"|p
+    s|^.*\["([^"]+)"\]\s*=\s*([^"].*)$|export \1=\2|p
+  ' "$file"
+}
 
-
-source "$CONFIG_DIR/Box64Droid.conf"
-source "$CONFIG_DIR/DXVK_D8VK_HUD.conf"
+# carrega as variáveis
+eval "$(import_python_conf "$CONFIG_DIR/Box64Droid.conf")"
+eval "$(import_python_conf "$CONFIG_DIR/DXVK_D8VK_HUD.conf")"
 
 # 10) Iniciar Box64 + Wine e o launcher do X11
 taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 "$OPT_DIR/autostart.bat" &>/dev/null &
