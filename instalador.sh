@@ -143,5 +143,10 @@ eval "$(import_python_conf "$CONFIG_DIR/DXVK_D8VK_HUD.conf")"
 
 # 10) Iniciar Box64 + Wine e o launcher do X11
 #taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 "$OPT_DIR/autostart.bat" &>/dev/null &
-taskset -c 4-7 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" &
+# 10) Iniciar Box64 + Wine e o launcher do X11
+
 am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null &
+sleep 2  # Aguarda o X11 iniciar (ajuste se necessário)
+export DISPLAY=:0
+
+taskset -c 0-7 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" &
