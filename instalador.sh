@@ -45,7 +45,7 @@ export GLIBC_PREFIX
 export PATH="$GLIBC_PREFIX/bin:$PATH"
 
 cd "$HOME_DIR"
-if [ ! -d "$GLIBC_PREFIX/bin/box64" ]; then
+if [ ! -f "$GLIBC_PREFIX/bin/box64" ]; then
   git clone https://github.com/ptitSeb/box64 box64-src
   cd box64-src
   sed -i 's/\/usr/\/data\/data\/com.termux\/files\/usr\/glibc/g' CMakeLists.txt
