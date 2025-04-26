@@ -243,7 +243,11 @@ pkill -f termux-x11
 pkill -f "busybox"
 
 # Reiniciar serviços necessários
+
 echo "Iniciando Termux-X11..."
+# Forçar orientação landscape no Termux-X11
+settings put system user_rotation 1 2>/dev/null || true
+
 export DISPLAY=:0
 termux-x11 :0 &>/dev/null &
 sleep 3
