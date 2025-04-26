@@ -53,8 +53,11 @@ HOME_DIR=${HOME:-/data/data/com.termux/files/home}
 
 
 # 1) Criar links simbólicos para os binários do Wine
-ln -sf "$OPT_DIR/wine/bin/wine"       "$BIN_DIR/wine"
-
+ln -s $PREFIX/glibc/opt/wine/bin/wine $PREFIX/glibc/bin/wine
+ln -s $PREFIX/glibc/opt/wine/bin/wine64 $PREFIX/glibc/bin/wine64
+ln -s $PREFIX/glibc/opt/wine/bin/wineserver $PREFIX/glibc/bin/wineserver
+ln -s $PREFIX/glibc/opt/wine/bin/wineboot $PREFIX/glibc/bin/wineboot
+ln -s $PREFIX/glibc/opt/wine/bin/winecfg $PREFIX/glibc/bin/winecfg
 
 # 3) Compilar o box64 no prefixo glibc
 
@@ -177,7 +180,7 @@ clear
 # 7) Criar prefixo Wine se não existir
 
 #instalacao limpa
-#rm -rf wine-9.13-glibc-amd64-wow64.tar.xz
+rm -rf wine-9.13-glibc-amd64-wow64.tar.xz
 
 echo "Wine 9.13 (WoW64)..."
 echo ""
@@ -193,7 +196,10 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     tar -xf wine-9.13-glibc-amd64-wow64.tar.xz -C "$PREFIX/glibc/opt"
     mv "$PREFIX/glibc/opt/wine-git-8d25995-exp-wow64-amd64" "$PREFIX/glibc/opt/wine"
     echo "Wine prefix! Creating..."
-    WINEDLLOVERRIDES="mscoree=" box64 wineboot
+    WINEDLLOVERRIDES="mscoree=" box64 wineboot --init
+    echo "Pressione qualquer tecla para continuar"
+    read -n1
+
     cp -r "$OPT_DIR/Shortcuts/"* "$HOME_DIR/.wine/drive_c/ProgramData/Microsoft/Windows/Start Menu/"
 
     rm -f "$HOME_DIR/.wine/dosdevices/z:" "$HOME_DIR/.wine/dosdevices/d:" || true
@@ -211,7 +217,7 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     cp "$OPT_DIR/Resources64/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/system32/"
 
     wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks -O winetricks &>/dev/null
-    chmod +x box64droid winetricks
+    chmod +x winetricks
     mv winetricks "$PREFIX/bin/"
 
 else
@@ -233,10 +239,10 @@ unset LD_PRELOAD
 
 # Matar processos existentes que podem interferir
 echo "Matando processos antigos..."
+pkill -f "python -m http.server" || true
 box64 wineserver -k &>/dev/null
 pkill -f pulseaudio   || true
 pkill -f 'app_process / com.termux.x11' || true
-pkill -f "python -m http.server" || true
 pkill -f termux-x11
 pkill -f "busybox"
 
@@ -283,6 +289,8 @@ cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binari
 #taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 $PREFIX/glibc/opt/autostart.bat &
 # Lançar o jogo com parâmetros otimizados BorderlandsGOTY.exe
 box64 wine explorer /desktop=shell,800x600  $PREFIX/glibc/opt/autostart.bat> "$HOME/box64.log" 2>&1 &
+#box64 wine /sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe> "$HOME/box64.log" 2>&1 &
+
 
 # Aguardar por tecla para encerrar
 echo "Pressione qualquer tecla para encerrar o jogo e limpar os processos"
