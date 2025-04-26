@@ -133,6 +133,7 @@ pkill -f pulseaudio   || true
 pkill -f 'app_process / com.termux.x11' || true
 pkill -f "python -m http.server" || true
 pkill -f termux-x11
+pkill -f "server\.py"
 
 # Reiniciar serviços necessários
 echo "Iniciando Termux-X11..."
@@ -182,23 +183,32 @@ box64 wine BorderlandsGOTY.exe > "$HOME/box64.log" 2>&1 &
 PID=$!
 
 # Função para atualizar o log continuamente
-update_log() {
-  while kill -0 $PID 2>/dev/null; do
-    cp "$HOME/box64.log" "$HOME/http_logs/box64.log"
-    sleep 10
-  done
-}
 
-# Iniciar a função de atualização de log em segundo plano
-update_log &
 
 # Iniciar servidor HTTP no diretório de logs
 cd "$HOME/http_logs"
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
 
-# Iniciar o servidor com binding explícito para 0.0.0.0 (todas as interfaces)
-echo "Iniciando servidor HTTP na porta 8081..."
-python -m http.server 8081 --bind 0.0.0.0 &
+cat > server.py << 'EOF'
+import os, shutil
+from http.server import SimpleHTTPRequestHandler, HTTPServer
+
+BASE_DIR = os.path.expanduser(os.getenv('HOME'))
+LOG_SRC  = os.path.join(BASE_DIR, 'box64.log')
+os.chdir(os.path.join(BASE_DIR, 'http_logs'))
+
+class Handler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        if self.path.endswith('/box64.log'):
+            shutil.copy(LOG_SRC, 'box64.log')
+        return super().do_GET()
+
+if __name__ == '__main__':
+    HTTPServer(('0.0.0.0', 8081), Handler).serve_forever()
+EOF
+
+echo "Iniciando servidor HTTP na porta 8081 em http://$IP_ADDRESS:8081/box64.log"
+python server.py &
 
 echo "Acesse o log em: http://$IP_ADDRESS:8081/box64.log"
 
@@ -208,3 +218,4 @@ read -n1
 box64 wineserver -k
 pkill -f "python -m http.server"
 pkill -f termux-x11
+pkill -f "server\.py"
