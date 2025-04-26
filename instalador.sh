@@ -13,7 +13,7 @@ pkg install pulseaudio wget glibc git xkeyboard-config freetype fontconfig libpn
 echo "Instalando Glibc"
 echo ""
 
-if [ ! -d "$PREFIX/glibc-prefix" ]; then
+if [ ! -d "$PREFIX/glibc" ]; then
   wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/glibc-prefix.tar.xz
   tar -xJf glibc-prefix.tar.xz -C $PREFIX/
   mv "$PREFIX/glibc-prefix" "$PREFIX/glibc"
@@ -31,24 +31,7 @@ HOME_DIR=${HOME:-/data/data/com.termux/files/home}
 
 # 1) Criar links simbólicos para os binários do Wine
 ln -sf "$OPT_DIR/wine/bin/wine"       "$BIN_DIR/wine"
-ln -sf "$OPT_DIR/wine/bin/wine64"     "$BIN_DIR/wine64"
-ln -sf "$OPT_DIR/wine/bin/wineserver" "$BIN_DIR/wineserver"
-ln -sf "$OPT_DIR/wine/bin/wineboot"   "$BIN_DIR/wineboot"
-ln -sf "$OPT_DIR/wine/bin/winecfg"    "$BIN_DIR/winecfg"
 
-# 2) Se Wine não estiver instalado, baixar e extrair
-if [ ! -d "$OPT_DIR/wine" ]; then
-  echo "Downloading Wine 9.13 (WoW64)..."
-  wget -q --show-progress \
-    https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.13-glibc-amd64-wow64.tar.xz \
-    -O wine-9.13-glibc-amd64-wow64.tar.xz
-
-  echo "Unpacking Wine 9.13 (WoW64)..."
-  mkdir -p "$OPT_DIR"
-  tar -xf wine-9.13-glibc-amd64-wow64.tar.xz -C "$OPT_DIR"
-  mv "$OPT_DIR/wine-git-8d25995-exp-wow64-amd64" "$OPT_DIR/wine"
-  rm wine-9.13-glibc-amd64-wow64.tar.xz
-fi
 
 # 3) Compilar o box64 no prefixo glibc
 cd "$OPT_DIR/wine/bin"
