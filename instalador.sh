@@ -196,7 +196,9 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     tar -xf wine-9.13-glibc-amd64-wow64.tar.xz -C "$PREFIX/glibc/opt"
     mv "$PREFIX/glibc/opt/wine-git-8d25995-exp-wow64-amd64" "$PREFIX/glibc/opt/wine"
     echo "Wine prefix! Creating..."
-    WINEDLLOVERRIDES="mscoree=" box64 wineboot --init
+    echo "Pressione qualquer tecla para continuar"
+    read -n1
+    WINEDLLOVERRIDES="mscoree=" box64 wineboot
     echo "Pressione qualquer tecla para continuar"
     read -n1
 
@@ -206,12 +208,20 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     ln -s /sdcard/Download "$HOME_DIR/.wine/dosdevices/d:" || true
     ln -s /data/data/com.termux/files "$HOME_DIR/.wine/dosdevices/z:" || true
 
+    echo "Pressione qualquer tecla para continuar"
+    read -n1
     echo "Installing DXVK, D8VK and vkd3d-proton..."
     box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat"
+    echo "Pressione qualquer tecla para continuar"
+    read -n1
     box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat"
+    echo "Pressione qualquer tecla para continuar"
+    read -n1
 
     box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12 /d native /f
     box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /d native /f
+    echo "Pressione qualquer tecla para continuar"
+    read -n1
 
     cp "$OPT_DIR/Resources/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/syswow64/"
     cp "$OPT_DIR/Resources64/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/system32/"
