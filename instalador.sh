@@ -98,28 +98,28 @@ cp_if_missing "$OPT_DIR/DXVK_D8VK.conf"           "$CONFIG_DIR/DXVK_D8VK.conf"
 cp_if_missing "$OPT_DIR/DXVK_D8VK_HUD.conf"       "$CONFIG_DIR/DXVK_D8VK_HUD.conf"
 
 # 7) Criar prefixo Wine se não existir
-if [ ! -d "$HOME_DIR/.wine" ]; then
-  echo "Wine prefix not found! Creating..."
-  WINEDLLOVERRIDES="mscoree=" box64 wineboot &>/dev/null
-  cp -r "$OPT_DIR/Shortcuts/"* "$HOME_DIR/.wine/drive_c/ProgramData/Microsoft/Windows/Start Menu/"
 
-  rm -f "$HOME_DIR/.wine/dosdevices/z:" "$HOME_DIR/.wine/dosdevices/d:" || true
-  ln -s /sdcard/Download "$HOME_DIR/.wine/dosdevices/d:"   || true
-  ln -s /sdcard           "$HOME_DIR/.wine/dosdevices/e:"   || true
-  ln -s /data/data/com.termux/files "$HOME_DIR/.wine/dosdevices/z:" || true
+echo "Wine prefix not found! Creating..."
+WINEDLLOVERRIDES="mscoree=" box64 wineboot &>/dev/null
+cp -r "$OPT_DIR/Shortcuts/"* "$HOME_DIR/.wine/drive_c/ProgramData/Microsoft/Windows/Start Menu/"
 
-  echo "Installing DXVK, D8VK and vkd3d-proton..."
-  box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat" &>/dev/null
-  box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat"          &>/dev/null
+rm -f "$HOME_DIR/.wine/dosdevices/z:" "$HOME_DIR/.wine/dosdevices/d:" || true
+ln -s /sdcard/Download "$HOME_DIR/.wine/dosdevices/d:" || true
+ln -s /sdcard "$HOME_DIR/.wine/dosdevices/e:" || true
+ln -s /data/data/com.termux/files "$HOME_DIR/.wine/dosdevices/z:" || true
 
-  box64 wine reg add "HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides" /v d3d12      /d native /f &>/dev/null
-  box64 wine reg add "HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides" /v d3d12core  /d native /f &>/dev/null
+echo "Installing DXVK, D8VK and vkd3d-proton..."
+box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat" &>/dev/null
+box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat"          &>/dev/null
 
-  cp "$OPT_DIR/Resources/vkd3d-proton/"*     "$HOME_DIR/.wine/drive_c/windows/syswow64/"
-  cp "$OPT_DIR/Resources64/vkd3d-proton/"*   "$HOME_DIR/.wine/drive_c/windows/system32/"
+box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12 /d native /f &>/dev/null
+box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /d native /f &>/dev/null
 
-  echo "Done!"
-fi
+cp "$OPT_DIR/Resources/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/syswow64/"
+cp "$OPT_DIR/Resources64/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/system32/"
+
+echo "Done!"
+
 
 # 8) Limpar tela e iniciar serviços
 clear
@@ -148,7 +148,7 @@ sleep 1
 # Configurar variáveis de ambiente
 export DISPLAY=:0
 export WINEDEBUG=-all+err 
-export WINEDLLOVERRIDES="mscoree,mshtml="
+export WINEDLLOVERRIDES="mscoree,mshtml=;wineusb.dll=n,b;winebus.sys=n,b;nsi.sys=n,b"
 
 # Configurações do Box64 para otimizar desempenho
 export BOX64_LOG=0        # Nenhum log (exceto erros fatais) :contentReference[oaicite:0]{index=0}
