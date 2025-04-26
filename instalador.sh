@@ -210,7 +210,9 @@ cp "$OPT_DIR/Resources64/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/system
 wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks -O winetricks &>/dev/null
 chmod +x box64droid winetricks
 mv winetricks "$PREFIX/bin/"
-#export PATH="$GLIBC_PREFIX/bin:$PATH"
+export PATH="$GLIBC_PREFIX/bin:$PATH"
+
+box64 winetricks vcrun2019 corefonts
 
 echo "Done!"
 sleep 10
