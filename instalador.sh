@@ -132,11 +132,13 @@ box64 wineserver -k &>/dev/null
 pkill -f pulseaudio   || true
 pkill -f 'app_process / com.termux.x11' || true
 pkill -f "python -m http.server 8081" || true
+pkill -f termux-x11
 
 # Reiniciar serviços necessários
 echo "Iniciando Termux-X11..."
+export DISPLAY=:0
 termux-x11 :0 &>/dev/null &
-sleep 2
+sleep 3
 
 echo "Iniciando PulseAudio..."
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1 &>/dev/null
