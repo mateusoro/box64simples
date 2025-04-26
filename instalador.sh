@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#curl -Lo instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
-
+#rm -f instalador.sh && curl -Lo instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
 clear
 echo "Instalando dependencias"
 echo ""
@@ -160,7 +159,7 @@ BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderla
 BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" > "$HOME_DIR/box64.log" 2>&1 &
 
 # Configurando servidor HTTP para o log
-echo "Configurando servidor HTTP para o log 8080..."
+echo "Configurando servidor HTTP para o log 8081..."
 mkdir -p "$HOME_DIR/http_logs"
 
 # Função para atualizar o log continuamente
@@ -180,7 +179,7 @@ cd "$HOME_DIR/http_logs"
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
 
 # Inicia o servidor com binding explícito para 0.0.0.0 (todas as interfaces)
-echo "Iniciando servidor HTTP na porta 8080..."
-python -m http.server 8080 &
+echo "Iniciando servidor HTTP na porta 8081..."
+python -m http.server 8081 &
 
-echo "Acesse o log em: http://$IP_ADDRESS:8080/box64.log"
+echo "Acesse o log em: http://$IP_ADDRESS:8081/box64.log"
