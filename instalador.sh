@@ -147,11 +147,14 @@ sleep 1
 
 # Configurar variáveis de ambiente
 export DISPLAY=:0
-export WINEDEBUG=+all
+export WINEDEBUG=-all+err 
 export WINEDLLOVERRIDES="mscoree,mshtml="
 
 # Configurações do Box64 para otimizar desempenho
-export BOX64_LOG=1
+export BOX64_LOG=0        # Nenhum log (exceto erros fatais) :contentReference[oaicite:0]{index=0}
+export BOX64_DYNAREC_LOG=0  # Desativa todos os logs do Dynarec :contentReference[oaicite:1]{index=1}
+export BOX64_SHOWSEGV=1   # Exibe só detalhes de SIGSEGV (falhas de segmentação) :contentReference[oaicite:2]{index=2}
+
 export BOX64_DYNAREC=1  # Ativar Dynarec para melhor desempenho
 export BOX64_DYNAREC_BIGBLOCK=3
 export BOX64_DYNAREC_STRONGMEM=1
@@ -170,7 +173,7 @@ am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null
 sleep 3  # Aguardar X11 iniciar
 
 # Limpar logs anteriores
-> "$HOME/box64.log"
+rm -f "$HOME/box64.log"
 
 echo "Iniciando o jogo..."
 cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/" || {
@@ -190,24 +193,32 @@ cd "$HOME/http_logs"
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
 
 cat > server.py << 'EOF'
-import os, shutil
-from http.server import SimpleHTTPRequestHandler, HTTPServer
+import os
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
 BASE_DIR = os.path.expanduser(os.getenv('HOME'))
 LOG_SRC  = os.path.join(BASE_DIR, 'box64.log')
-os.chdir(os.path.join(BASE_DIR, 'http_logs'))
+LOG_DIR  = os.path.join(BASE_DIR, 'http_logs')
+CONFIG_DIR = '/sdcard/Box64Droid (native)'
+os.chdir(LOG_DIR)
 
 class Handler(SimpleHTTPRequestHandler):
-    def do_GET(self):
-        if self.path.endswith('/box64.log'):
-            shutil.copy(LOG_SRC, 'box64.log')
-        return super().do_GET()
+    protocol_version = 'HTTP/1.0'
+    def translate_path(self, path):
+        if path == '/box64.log':
+            return os.path.abspath(LOG_SRC)
+        # Permitir acesso aos arquivos do CONFIG_DIR
+        if path.startswith('/config/'):
+            filename = path[len('/config/'):]
+            return os.path.join(CONFIG_DIR, filename)
+        return super().translate_path(path)
 
 if __name__ == '__main__':
-    HTTPServer(('0.0.0.0', 8081), Handler).serve_forever()
+    ThreadingHTTPServer(('0.0.0.0', 8081), Handler).serve_forever()
 EOF
 
 echo "Iniciando servidor HTTP na porta 8081 em http://$IP_ADDRESS:8081/box64.log"
+echo "Arquivos de configuração disponíveis em: http://$IP_ADDRESS:8081/config/NOME_DO_ARQUIVO"
 python server.py &
 
 echo "Acesse o log em: http://$IP_ADDRESS:8081/box64.log"
