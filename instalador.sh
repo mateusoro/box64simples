@@ -4,6 +4,8 @@ clear
 echo "Instalando dependencias"
 echo ""
 
+termux-setup-storage
+
 apt-get update #&>/dev/null
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade #&>/dev/null
 apt install python --no-install-recommends -y #&>/dev/null
@@ -137,5 +139,6 @@ eval "$(import_python_conf "$CONFIG_DIR/Box64Droid.conf")"
 eval "$(import_python_conf "$CONFIG_DIR/DXVK_D8VK_HUD.conf")"
 
 # 10) Iniciar Box64 + Wine e o launcher do X11
-taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 "$OPT_DIR/autostart.bat" &>/dev/null &
+#taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 "$OPT_DIR/autostart.bat" &>/dev/null &
+taskset -c 4-7 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" &>/dev/null &
 am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null &
