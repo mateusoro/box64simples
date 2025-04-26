@@ -15,13 +15,13 @@ apt-get update #&>/dev/null
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade #&>/dev/null
 apt install python --no-install-recommends -y #&>/dev/null
 pkg install x11-repo glibc-repo -y #&>/dev/null
-pkg install pulseaudio wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends #&>/dev/null
+pkg install pulseaudio iproute2 wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends #&>/dev/null
 
 box64 wineserver -k &>/dev/null
 pkill -f pulseaudio   || true
 pkill -f 'app_process / com.termux.x11' || true
 
-
+clear
 echo "Instalando Glibc"
 echo ""
 
@@ -155,6 +155,7 @@ export DISPLAY=:0
 BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" 2>&1 | tee -a "$HOME_DIR/box64.log" &
 
 # inicia sem travar o terminal (nohup) escutando em todas as interfaces
+clear
 nohup python3 -m http.server 8080 --bind 0.0.0.0 --directory "$HOME_DIR" &>/dev/null &
 IP=$(ip route get 8.8.8.8 | awk 'NR==1{print $7}')
 echo "Servidor HTTP ativo em: http://$IP:8080/box64.log"
