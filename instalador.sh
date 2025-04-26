@@ -181,6 +181,6 @@ IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p
 
 # Inicia o servidor com binding explícito para 0.0.0.0 (todas as interfaces)
 echo "Iniciando servidor HTTP na porta 8080..."
-python -m http.server 8000 &
+python -m http.server 8080 &
 
 echo "Acesse o log em: http://$IP_ADDRESS:8080/box64.log"
