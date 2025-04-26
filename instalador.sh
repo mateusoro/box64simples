@@ -10,6 +10,11 @@ apt install python --no-install-recommends -y #&>/dev/null
 pkg install x11-repo glibc-repo -y #&>/dev/null
 pkg install pulseaudio wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends #&>/dev/null
 
+box64 wineserver -k &>/dev/null
+pkill -f pulseaudio   || true
+pkill -f 'app_process / com.termux.x11' || true
+
+
 echo "Instalando Glibc"
 echo ""
 
