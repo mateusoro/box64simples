@@ -172,7 +172,7 @@ export BOX64_NORCFILES=0
 rm -f "$HOME/box64.log"
 mkdir -p "$HOME_DIR/http_logs"
 ln -sf "$HOME/box64.log" "$HOME/http_logs/box64.log"
-python -m http.server 8081 --directory "$HOME/http_logs" &
+python -m http.server 8081 --bind 0.0.0.0 --directory "$HOME/http_logs" &
 
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
 echo "Iniciando servidor HTTP na porta 8081 em http://$IP_ADDRESS:8081/box64.log"
