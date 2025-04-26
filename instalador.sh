@@ -4,7 +4,10 @@ clear
 echo "Instalando dependencias"
 echo ""
 
-termux-setup-storage
+# Verificar se o armazenamento já está montado e acessível
+if [ ! -d "/storage/emulated/0" ] && [ ! -d "$HOME/storage" ]; then
+  termux-setup-storage
+fi
 
 apt-get update #&>/dev/null
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade #&>/dev/null
