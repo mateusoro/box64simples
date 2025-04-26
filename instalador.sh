@@ -154,8 +154,12 @@ export DISPLAY=:0
 clear
 
 BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" > "$HOME_DIR/box64.log" 2>&1 &
+#!/bin/bash
 
-# inicia sem travar o terminal (nohup) escutando em todas as interfaces
+# Modificação do comando para redirecionar o log apenas para o arquivo (sem exibir na tela)
+BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" > "$HOME_DIR/box64.log" 2>&1 &
+
+# Configurando servidor HTTP para o log
 echo "Configurando servidor HTTP para o log..."
 mkdir -p "$HOME_DIR/http_logs"
 
@@ -173,8 +177,10 @@ update_log &
 
 # Inicia o servidor HTTP no diretório de logs
 cd "$HOME_DIR/http_logs"
+IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
+
+# Inicia o servidor com binding explícito para 0.0.0.0 (todas as interfaces)
+echo "Iniciando servidor HTTP na porta 8000..."
 python -m http.server 8000 &
 
-# Exibe o endereço IP para acesso
-IP_ADDRESS=$(ip addr show | grep -E "inet .* scope global" | head -1 | awk '{print $2}' | cut -d/ -f1)
 echo "Acesse o log em: http://$IP_ADDRESS:8000/box64.log"
