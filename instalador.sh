@@ -18,7 +18,7 @@ apt-get update #&>/dev/null
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade #&>/dev/null
 apt install python --no-install-recommends -y #&>/dev/null
 pkg install x11-repo glibc-repo -y #&>/dev/null
-pkg install busybox-httpd pulseaudio iproute2 wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends #&>/dev/null
+pkg install busybox pulseaudio iproute2 wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends #&>/dev/null
 
 box64 wineserver -k &>/dev/null
 pkill -f pulseaudio   || true
@@ -192,7 +192,7 @@ PID=$!
 cd "$HOME/http_logs"
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
 
-busybox-httpd -f -p 8081 -h $HOME/http_logs &
+busybox httpd -f -p 8081 -h $HOME/http_logs &
 
 echo "Iniciando servidor HTTP na porta 8081 em http://$IP_ADDRESS:8081/box64.log"
 
