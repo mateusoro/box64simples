@@ -18,7 +18,7 @@ apt-get update #&>/dev/null
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade #&>/dev/null
 apt install python --no-install-recommends -y #&>/dev/null
 pkg install x11-repo glibc-repo -y #&>/dev/null
-pkg install pulseaudio iproute2 wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends #&>/dev/null
+pkg install busybox-httpd pulseaudio iproute2 wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends #&>/dev/null
 
 box64 wineserver -k &>/dev/null
 pkill -f pulseaudio   || true
@@ -102,7 +102,7 @@ cp_if_missing "$OPT_DIR/DXVK_D8VK_HUD.conf"       "$CONFIG_DIR/DXVK_D8VK_HUD.con
 
 # 7) Criar prefixo Wine se não existir
 
-echo "Wine prefix not found! Creating..."
+echo "Wine prefix! Creating..."
 WINEDLLOVERRIDES="mscoree=" box64 wineboot &>/dev/null
 cp -r "$OPT_DIR/Shortcuts/"* "$HOME_DIR/.wine/drive_c/ProgramData/Microsoft/Windows/Start Menu/"
 
@@ -188,43 +188,14 @@ cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binari
 box64 wine BorderlandsGOTY.exe > "$HOME/box64.log" 2>&1 &
 PID=$!
 
-# Função para atualizar o log continuamente
-
-
 # Iniciar servidor HTTP no diretório de logs
 cd "$HOME/http_logs"
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
 
-cat > server.py << 'EOF'
-import os
-from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
-
-BASE_DIR = os.path.expanduser(os.getenv('HOME'))
-LOG_SRC  = os.path.join(BASE_DIR, 'box64.log')
-LOG_DIR  = os.path.join(BASE_DIR, 'http_logs')
-CONFIG_DIR = '/sdcard/Box64Droid (native)'
-os.chdir(LOG_DIR)
-
-class Handler(SimpleHTTPRequestHandler):
-    protocol_version = 'HTTP/1.0'
-    def translate_path(self, path):
-        if path == '/box64.log':
-            return os.path.abspath(LOG_SRC)
-        # Permitir acesso aos arquivos do CONFIG_DIR
-        if path.startswith('/config/'):
-            filename = path[len('/config/'):]
-            return os.path.join(CONFIG_DIR, filename)
-        return super().translate_path(path)
-
-if __name__ == '__main__':
-    ThreadingHTTPServer(('0.0.0.0', 8081), Handler).serve_forever()
-EOF
+busybox-httpd -f -p 8081 -h $HOME/http_logs &
 
 echo "Iniciando servidor HTTP na porta 8081 em http://$IP_ADDRESS:8081/box64.log"
-echo "Arquivos de configuração disponíveis em: http://$IP_ADDRESS:8081/config/NOME_DO_ARQUIVO"
-nohup python3 server.py & 
 
-echo "Acesse o log em: http://$IP_ADDRESS:8081/box64.log"
 
 # Aguardar por tecla para encerrar
 echo "Pressione qualquer tecla para encerrar o jogo e limpar os processos"
