@@ -11,6 +11,9 @@ if [ ! -d "/storage/emulated/0" ] && [ ! -d "$HOME/storage" ]; then
   termux-setup-storage
 fi
 
+termux-wake-lock
+
+
 apt-get update #&>/dev/null
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade #&>/dev/null
 apt install python --no-install-recommends -y #&>/dev/null
@@ -219,7 +222,7 @@ EOF
 
 echo "Iniciando servidor HTTP na porta 8081 em http://$IP_ADDRESS:8081/box64.log"
 echo "Arquivos de configuração disponíveis em: http://$IP_ADDRESS:8081/config/NOME_DO_ARQUIVO"
-python server.py &
+nohup python3 server.py & 
 
 echo "Acesse o log em: http://$IP_ADDRESS:8081/box64.log"
 
