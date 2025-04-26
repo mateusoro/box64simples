@@ -168,15 +168,19 @@ export BOX64_SDL2_JOYWASD=0
 export BOX64_PREFER_EMULATED=0
 export BOX64_NORCFILES=0
 
-# Iniciar o jogo com argumentos melhorados
+
+rm -f "$HOME/box64.log"
 mkdir -p "$HOME_DIR/http_logs"
+ln -sf "$HOME/box64.log" "$HOME/http_logs/box64.log"
+python -m http.server 8081 --directory "$HOME/http_logs" &
+
+IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
+echo "Iniciando servidor HTTP na porta 8081 em http://$IP_ADDRESS:8081/box64.log"
 
 # Verificar se a inicialização do X11 foi bem-sucedida
 am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null
 sleep 3  # Aguardar X11 iniciar
 
-# Limpar logs anteriores
-rm -f "$HOME/box64.log"
 
 echo "Iniciando o jogo..."
 cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/" || {
@@ -184,19 +188,8 @@ cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binari
   exit 1
 }
 
-# Iniciar servidor HTTP no diretório de logs
-
-IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
-
-busybox httpd -f -p 0.0.0.0:8081 -h "$HOME/http_logs" &
-
-echo "Iniciando servidor HTTP na porta 8081 em http://$IP_ADDRESS:8081/box64.log"
-
 # Lançar o jogo com parâmetros otimizados
 box64 wine BorderlandsGOTY.exe > "$HOME/box64.log" 2>&1 &
-PID=$!
-
-
 
 # Aguardar por tecla para encerrar
 echo "Pressione qualquer tecla para encerrar o jogo e limpar os processos"
