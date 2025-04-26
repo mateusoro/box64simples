@@ -136,7 +136,7 @@ pkill -f pulseaudio   || true
 pkill -f 'app_process / com.termux.x11' || true
 pkill -f "python -m http.server" || true
 pkill -f termux-x11
-pkill -f "server\.py"
+pkill -f "busybox"
 
 # Reiniciar serviços necessários
 echo "Iniciando Termux-X11..."
@@ -192,7 +192,7 @@ PID=$!
 cd "$HOME/http_logs"
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
 
-busybox httpd -f -p 8081 -h $HOME/http_logs &
+busybox httpd -f -p 0.0.0.0:8081 -h "$HOME/http_logs" &
 
 echo "Iniciando servidor HTTP na porta 8081 em http://$IP_ADDRESS:8081/box64.log"
 
@@ -203,4 +203,4 @@ read -n1
 box64 wineserver -k
 pkill -f "python -m http.server"
 pkill -f termux-x11
-pkill -f "server\.py"
+pkill -f "busybox"
