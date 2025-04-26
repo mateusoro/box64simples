@@ -158,7 +158,7 @@ export VKD3D_FEATURE_LEVEL="12_0"
 
 # Configurar variáveis de ambiente
 
-export WINEDEBUG=-all+err 
+export WINEDEBUG=+err+all,+loaddll,+module
 export WINEDLLOVERRIDES="mscoree,mshtml=;wineusb.dll=n,b;winebus.sys=n,b;nsi.sys=n,b"
 
 # Configurações do Box64 para otimizar desempenho
@@ -178,7 +178,11 @@ rm -rf "$PREFIX_PATH"
 rm -rf "/data/data/com.termux/files/usr/glibc/opt/wine"
 echo "Downloading Wine 9.13 (WoW64)..."
 echo ""
-wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.13-glibc-amd64-wow64.tar.xz
+if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
+  wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.13-glibc-amd64-wow64.tar.xz
+else
+  echo "Arquivo wine-9.13-glibc-amd64-wow64.tar.xz já existe. Pulando download."
+fi
 echo ""
 echo "Unpacking Wine 9.13 (WoW64)..."
 tar -xf wine-9.13-glibc-amd64-wow64.tar.xz -C "$PREFIX/glibc/opt"
