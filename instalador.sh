@@ -14,11 +14,11 @@ fi
 termux-wake-lock
 
 
-apt-get update #&>/dev/null
-apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade #&>/dev/null
-apt install python --no-install-recommends -y #&>/dev/null
-pkg install x11-repo glibc-repo -y #&>/dev/null
-pkg install busybox pulseaudio iproute2 wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends #&>/dev/null
+apt-get update &>/dev/null
+apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade &>/dev/null
+apt install python --no-install-recommends -y &>/dev/null
+pkg install x11-repo glibc-repo -y &>/dev/null
+pkg install busybox pulseaudio iproute2 wget glibc git xkeyboard-config freetype fontconfig libpng xorg-xrandr termux-x11-nightly termux-am zenity which bash curl sed cabextract -y --no-install-recommends &>/dev/null
 
 box64 wineserver -k &>/dev/null
 pkill -f pulseaudio   || true
@@ -27,7 +27,8 @@ pkill -f 'app_process / com.termux.x11' || true
 echo "Matando qualquer servidor HTTP existente na porta 8081..."
 pkill -f "python -m http.server 8081" || true
 
-
+echo "Pressione qualquer tecla para continuar"
+read -n1
 clear
 echo "Instalando Glibc"
 echo ""
@@ -166,8 +167,9 @@ export BOX64_LOG=0        # Nenhum log (exceto erros fatais) :contentReference[o
 export BOX64_DYNAREC_LOG=0  # Desativa todos os logs do Dynarec :contentReference[oaicite:1]{index=1}
 export BOX64_SHOWSEGV=1   # Exibe só detalhes de SIGSEGV (falhas de segmentação) :contentReference[oaicite:2]{index=2}
 
-
-
+echo "Pressione qualquer tecla para continuar"
+read -n1
+clear
 # 7) Criar prefixo Wine se não existir
 
 #instalacao limpa
@@ -219,6 +221,8 @@ box64 winetricks vcrun2019 corefonts
 
 echo "Done!"
 
+echo "Pressione qualquer tecla para continuar"
+read -n1
 
 # 8) Limpar tela e iniciar serviços
 clear
