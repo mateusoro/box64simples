@@ -209,7 +209,7 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     mv winetricks "$PREFIX/bin/"
 
 else
-  echo "Arquivo instalado."
+  echo "Wine instalado."
 fi
 
 
