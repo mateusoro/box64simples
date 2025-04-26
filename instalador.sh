@@ -125,6 +125,7 @@ export ZINK_DEBUG="compact"
 export TU_DEBUG="noconform"
 export MANGOHUD="0"
 
+export DXVK_HUD="fps,version,devinfo,gpuload"
 
 export BOX64_BASH="/data/data/com.termux/files/usr/glibc/opt/box64_bash"
 export BOX64_DYNAREC_BIGBLOCK="3"
@@ -175,21 +176,20 @@ cp -r "$OPT_DIR/Shortcuts/"* "$HOME_DIR/.wine/drive_c/ProgramData/Microsoft/Wind
 
 rm -f "$HOME_DIR/.wine/dosdevices/z:" "$HOME_DIR/.wine/dosdevices/d:" || true
 ln -s /sdcard/Download "$HOME_DIR/.wine/dosdevices/d:" || true
-ln -s /sdcard "$HOME_DIR/.wine/dosdevices/e:" || true
 ln -s /data/data/com.termux/files "$HOME_DIR/.wine/dosdevices/z:" || true
 
 echo "Installing DXVK, D8VK and vkd3d-proton..."
-box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat" &>/dev/null
-box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat"          &>/dev/null
+box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat"
+box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat"
 
-box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12 /d native /f &>/dev/null
-box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /d native /f &>/dev/null
+box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12 /d native /f
+box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /d native /f
 
 cp "$OPT_DIR/Resources/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/syswow64/"
 cp "$OPT_DIR/Resources64/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/system32/"
 
 echo "Done!"
-
+sleep 10
 
 # 8) Limpar tela e iniciar serviços
 clear
