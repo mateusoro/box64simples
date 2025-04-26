@@ -131,7 +131,7 @@ echo "Matando processos antigos..."
 box64 wineserver -k &>/dev/null
 pkill -f pulseaudio   || true
 pkill -f 'app_process / com.termux.x11' || true
-pkill -f "python -m http.server 8081" || true
+pkill -f "python -m http.server" || true
 pkill -f termux-x11
 
 # Reiniciar serviços necessários
@@ -198,7 +198,7 @@ IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p
 
 # Iniciar o servidor com binding explícito para 0.0.0.0 (todas as interfaces)
 echo "Iniciando servidor HTTP na porta 8081..."
-python -m http.server 8081 &
+python -m http.server 8081 --bind 0.0.0.0 &
 
 echo "Acesse o log em: http://$IP_ADDRESS:8081/box64.log"
 
@@ -206,4 +206,5 @@ echo "Acesse o log em: http://$IP_ADDRESS:8081/box64.log"
 echo "Pressione qualquer tecla para encerrar o jogo e limpar os processos"
 read -n1
 box64 wineserver -k
-pkill -f "python -m http.server 8081"
+pkill -f "python -m http.server"
+pkill -f termux-x11
