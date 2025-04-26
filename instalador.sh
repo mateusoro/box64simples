@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #rm -f instalador.sh && curl -s -f -L --retry 3 --connect-timeout 3 --max-time 10 --retry-delay 1 --raw -o instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
+#export PATH="$PREFIX/glibc/bin:$PATH"; unset LD_PRELOAD 
 
 clear
 echo "Instalando dependencias"
@@ -48,6 +49,8 @@ GLIBC_PREFIX="$PREFIX/glibc"
 OPT_DIR="$GLIBC_PREFIX/opt"
 BIN_DIR="$GLIBC_PREFIX/bin"
 HOME_DIR=${HOME:-/data/data/com.termux/files/home}
+
+
 
 # 1) Criar links simbólicos para os binários do Wine
 ln -sf "$OPT_DIR/wine/bin/wine"       "$BIN_DIR/wine"
@@ -271,13 +274,14 @@ sleep 3  # Aguardar X11 iniciar
 
 echo "Iniciando o jogo..."
 cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/" || {
+  #
   echo "Erro: Não foi possível acessar o diretório do jogo!"
   exit 1
 }
 
 #taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 $PREFIX/glibc/opt/autostart.bat &
-# Lançar o jogo com parâmetros otimizados
-box64 wine BorderlandsGOTY.exe /desktop=shell,800x600 > "$HOME/box64.log" 2>&1 &
+# Lançar o jogo com parâmetros otimizados BorderlandsGOTY.exe
+box64 wine explorer /desktop=shell,800x600  $PREFIX/glibc/opt/autostart.bat> "$HOME/box64.log" 2>&1 &
 
 # Aguardar por tecla para encerrar
 echo "Pressione qualquer tecla para encerrar o jogo e limpar os processos"
