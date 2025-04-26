@@ -172,6 +172,10 @@ export BOX64_NORCFILES=0
 rm -f "$HOME/box64.log"
 mkdir -p "$HOME_DIR/http_logs"
 ln -sf "$HOME/box64.log" "$HOME/http_logs/box64.log"
+ln -sf "$CONFIG_DIR/Box64Droid.conf" "$HOME_DIR/http_logs/Box64Droid.conf"
+ln -sf "$CONFIG_DIR/DXVK_D8VK.conf" "$HOME_DIR/http_logs/DXVK_D8VK.conf"
+ln -sf "$CONFIG_DIR/DXVK_D8VK_HUD.conf" "$HOME_DIR/http_logs/DXVK_D8VK_HUD.conf"
+
 python -m http.server 8081 --bind 0.0.0.0 --directory "$HOME/http_logs" &
 
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
