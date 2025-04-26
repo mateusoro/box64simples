@@ -152,10 +152,29 @@ am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null &
 sleep 2  # Aguarda o X11 iniciar (ajuste se necessário)
 export DISPLAY=:0
 clear
-nohup python3 -m http.server 8080 --bind 0.0.0.0 --directory "$HOME_DIR" &>/dev/null &
-IP=$(ip route get 8.8.8.8 | awk 'NR==1{print $7}')
-echo "Servidor HTTP ativo em: http://$IP:8080/box64.log"
 
-BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" 2>&1 | tee -a "$HOME_DIR/box64.log" &
+BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" > "$HOME_DIR/box64.log" 2>&1 &
 
 # inicia sem travar o terminal (nohup) escutando em todas as interfaces
+echo "Configurando servidor HTTP para o log..."
+mkdir -p "$HOME_DIR/http_logs"
+
+# Função para atualizar o log continuamente
+update_log() {
+  while true; do
+    # Copia o log para a pasta do servidor HTTP
+    cp "$HOME_DIR/box64.log" "$HOME_DIR/http_logs/box64.log"
+    sleep 5
+  done
+}
+
+# Inicia a função de atualização em segundo plano
+update_log &
+
+# Inicia o servidor HTTP no diretório de logs
+cd "$HOME_DIR/http_logs"
+python -m http.server 8000 &
+
+# Exibe o endereço IP para acesso
+IP_ADDRESS=$(ip addr show | grep -E "inet .* scope global" | head -1 | awk '{print $2}' | cut -d/ -f1)
+echo "Acesse o log em: http://$IP_ADDRESS:8000/box64.log"
