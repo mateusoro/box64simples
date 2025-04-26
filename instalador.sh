@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#curl -Lo instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
+
 clear
 echo "Instalando dependencias"
 echo ""
@@ -150,4 +152,8 @@ am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null &
 sleep 2  # Aguarda o X11 iniciar (ajuste se necessário)
 export DISPLAY=:0
 
-BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" &
+BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/.../BorderlandsGOTY.exe" 2>&1 | tee -a "$HOME_DIR/box64.log" &
+
+# inicia sem travar o terminal (nohup) escutando em todas as interfaces
+nohup python3 -m http.server 8080 --bind 0.0.0.0 --directory "$HOME_DIR" &>/dev/null &
+echo "Servidor HTTP ativo em: http://$(hostname -I | awk '{print $1}'):8080/box64.log"
