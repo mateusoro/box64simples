@@ -160,7 +160,7 @@ BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderla
 BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" > "$HOME_DIR/box64.log" 2>&1 &
 
 # Configurando servidor HTTP para o log
-echo "Configurando servidor HTTP para o log..."
+echo "Configurando servidor HTTP para o log 8080..."
 mkdir -p "$HOME_DIR/http_logs"
 
 # Função para atualizar o log continuamente
