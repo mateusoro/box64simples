@@ -13,10 +13,15 @@ pkg install pulseaudio wget glibc git xkeyboard-config freetype fontconfig libpn
 echo "Instalando Glibc"
 echo ""
 
-wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/glibc-prefix.tar.xz
-tar -xJf glibc-prefix.tar.xz -C $PREFIX/
+if [ ! -d "$PREFIX/glibc-prefix" ]; then
+  wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/glibc-prefix.tar.xz
+  tar -xJf glibc-prefix.tar.xz -C $PREFIX/
+  mv "$PREFIX/glibc-prefix" "$PREFIX/glibc"
+else
+  echo "Glibc já instalado. Pulando a instalação."
+fi
 
-
+unset LD_PRELOAD
 # Variáveis
 PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
 GLIBC_PREFIX="$PREFIX/glibc"
@@ -46,28 +51,30 @@ if [ ! -d "$OPT_DIR/wine" ]; then
 fi
 
 # 3) Compilar o box64 no prefixo glibc
-(
-    cd "$OPT_DIR/wine/bin"
-    unset LD_PRELOAD
-    export GLIBC_PREFIX
-    export PATH="$GLIBC_PREFIX/bin:$PATH"
+cd "$OPT_DIR/wine/bin"
+unset LD_PRELOAD
+export GLIBC_PREFIX
+export PATH="$GLIBC_PREFIX/bin:$PATH"
 
-    cd "$HOME_DIR"
-    git clone https://github.com/ptitSeb/box64 box64-src
-    cd box64-src
-    sed -i 's/\/usr/\/data\/data\/com.termux\/files\/usr\/glibc/g' CMakeLists.txt
-    sed -i 's/\/etc/\/data\/data\/com.termux\/files\/usr\/glibc\/etc/g' CMakeLists.txt
-    mkdir -p build && cd build
-    cmake .. \
-    -DARM_DYNAREC=1 \
-    -DCMAKE_INSTALL_PREFIX="$GLIBC_PREFIX" \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DBAD_SIGNAL=ON \
-    -DSD845=ON
-    make -j8 && make install
-    cd "$HOME_DIR"
-    rm -rf box64-src
-)
+cd "$HOME_DIR"
+if [ ! -d "$GLIBC_PREFIX/bin/box64" ]; then
+  git clone https://github.com/ptitSeb/box64 box64-src
+  cd box64-src
+  sed -i 's/\/usr/\/data\/data\/com.termux\/files\/usr\/glibc/g' CMakeLists.txt
+  sed -i 's/\/etc/\/data\/data\/com.termux\/files\/usr\/glibc\/etc/g' CMakeLists.txt
+  mkdir -p build && cd build
+  cmake .. \
+  -DARM_DYNAREC=1 \
+  -DCMAKE_INSTALL_PREFIX="$GLIBC_PREFIX" \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DBAD_SIGNAL=ON \
+  -DSD845=ON
+  make -j8 && make install
+  cd "$HOME_DIR"
+  rm -rf box64-src
+else
+  echo "Box64 já compilado. Pulando a compilação."
+fi
 
 # 4) Atualizar variáveis de ambiente para esta sessão
 export GLIBC_PREFIX
