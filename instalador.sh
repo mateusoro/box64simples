@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#rm -f instalador.sh && curl -Lo instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
+#rm -f instalador.sh && curl -s -f -L --retry 3 --connect-timeout 3 --max-time 10 --retry-delay 1 --raw -o instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
+
 clear
 echo "Instalando dependencias"
 echo ""
@@ -19,6 +20,10 @@ pkg install pulseaudio iproute2 wget glibc git xkeyboard-config freetype fontcon
 box64 wineserver -k &>/dev/null
 pkill -f pulseaudio   || true
 pkill -f 'app_process / com.termux.x11' || true
+
+echo "Matando qualquer servidor HTTP existente na porta 8081..."
+pkill -f "python -m http.server 8081" || true
+
 
 clear
 echo "Instalando Glibc"
@@ -120,66 +125,83 @@ fi
 clear
 unset LD_PRELOAD
 
-echo "Starting Termux-X11..."
+
+# Matar processos existentes que podem interferir
+echo "Matando processos antigos..."
+box64 wineserver -k &>/dev/null
+pkill -f pulseaudio   || true
+pkill -f 'app_process / com.termux.x11' || true
+pkill -f "python -m http.server 8081" || true
+
+# Reiniciar serviços necessários
+echo "Iniciando Termux-X11..."
 termux-x11 :0 &>/dev/null &
+sleep 2
 
-echo "Starting PulseAudio..."
+echo "Iniciando PulseAudio..."
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1 &>/dev/null
+sleep 1
 
-# 9) Carregar configurações do usuário
+# Configurar variáveis de ambiente
+export DISPLAY=:0
+export WINEDEBUG=+all
+export WINEDLLOVERRIDES="mscoree,mshtml="
 
-import_python_conf(){
-  local file="$1"
-  # cada linha tipo: os.environ["NOME"]=valor
-  # converte em: export NOME="valor"
-  sed -En '
-    s|^.*\["([^"]+)"\]\s*=\s*"(.*)"$|export \1="\2"|p
-    s|^.*\["([^"]+)"\]\s*=\s*([^"].*)$|export \1=\2|p
-  ' "$file"
+# Configurações do Box64 para otimizar desempenho
+export BOX64_LOG=1
+export BOX64_DYNAREC=1  # Ativar Dynarec para melhor desempenho
+export BOX64_DYNAREC_BIGBLOCK=3
+export BOX64_DYNAREC_STRONGMEM=1
+export BOX64_DYNAREC_SAFEFLAGS=2
+export BOX64_NOBANNER=1
+export BOX64_JITGDB=0
+export BOX64_SDL2_JOYWASD=0
+export BOX64_PREFER_EMULATED=0
+export BOX64_NORCFILES=0
+
+# Iniciar o jogo com argumentos melhorados
+mkdir -p "$HOME_DIR/http_logs"
+
+# Verificar se a inicialização do X11 foi bem-sucedida
+am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null
+sleep 3  # Aguardar X11 iniciar
+
+# Limpar logs anteriores
+> "$HOME/box64.log"
+
+echo "Iniciando o jogo..."
+cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/" || {
+  echo "Erro: Não foi possível acessar o diretório do jogo!"
+  exit 1
 }
 
-# carrega as variáveis
-eval "$(import_python_conf "$CONFIG_DIR/Box64Droid.conf")"
-eval "$(import_python_conf "$CONFIG_DIR/DXVK_D8VK_HUD.conf")"
-
-# 10) Iniciar Box64 + Wine e o launcher do X11
-#taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 "$OPT_DIR/autostart.bat" &>/dev/null &
-# 10) Iniciar Box64 + Wine e o launcher do X11
-export DISPLAY=:0
-
-am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null &
-sleep 2  # Aguarda o X11 iniciar (ajuste se necessário)
-export DISPLAY=:0
-clear
-
-BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" > "$HOME_DIR/box64.log" 2>&1 &
-#!/bin/bash
-
-# Modificação do comando para redirecionar o log apenas para o arquivo (sem exibir na tela)
-BOX64_LOG=1 BOX64_DYNAREC=0 box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" > "$HOME_DIR/box64.log" 2>&1 &
-
-# Configurando servidor HTTP para o log
-echo "Configurando servidor HTTP para o log 8081..."
-mkdir -p "$HOME_DIR/http_logs"
+# Lançar o jogo com parâmetros otimizados
+box64 wine BorderlandsGOTY.exe > "$HOME/box64.log" 2>&1 &
+PID=$!
 
 # Função para atualizar o log continuamente
 update_log() {
-  while true; do
-    # Copia o log para a pasta do servidor HTTP
-    cp "$HOME_DIR/box64.log" "$HOME_DIR/http_logs/box64.log"
+  while kill -0 $PID 2>/dev/null; do
+    cp "$HOME/box64.log" "$HOME/http_logs/box64.log"
     sleep 5
   done
 }
 
-# Inicia a função de atualização em segundo plano
+# Iniciar a função de atualização de log em segundo plano
 update_log &
 
-# Inicia o servidor HTTP no diretório de logs
-cd "$HOME_DIR/http_logs"
+# Iniciar servidor HTTP no diretório de logs
+cd "$HOME/http_logs"
 IP_ADDRESS=$(ifconfig 2>/dev/null | grep 'inet ' | awk '{print $2}' | sed -n '2p')
 
-# Inicia o servidor com binding explícito para 0.0.0.0 (todas as interfaces)
+# Iniciar o servidor com binding explícito para 0.0.0.0 (todas as interfaces)
 echo "Iniciando servidor HTTP na porta 8081..."
 python -m http.server 8081 &
 
 echo "Acesse o log em: http://$IP_ADDRESS:8081/box64.log"
+
+# Aguardar por tecla para encerrar
+echo "Pressione qualquer tecla para encerrar o jogo e limpar os processos"
+read -n1
+box64 wineserver -k
+pkill -f "python -m http.server 8081"
