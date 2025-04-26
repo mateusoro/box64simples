@@ -54,13 +54,14 @@ ln -sf "$OPT_DIR/wine/bin/wine"       "$BIN_DIR/wine"
 
 
 # 3) Compilar o box64 no prefixo glibc
-cd "$OPT_DIR/wine/bin"
+
 unset LD_PRELOAD
 export GLIBC_PREFIX
 export PATH="$GLIBC_PREFIX/bin:$PATH"
 
-cd "$HOME_DIR"
+
 if [ ! -e "$GLIBC_PREFIX/bin/box64" ]; then
+  cd "$HOME_DIR"
   git clone https://github.com/ptitSeb/box64 box64-src
   cd box64-src
   sed -i 's/\/usr/\/data\/data\/com.termux\/files\/usr\/glibc/g' CMakeLists.txt
@@ -173,7 +174,7 @@ clear
 # 7) Criar prefixo Wine se não existir
 
 #instalacao limpa
-rm -rf wine-9.13-glibc-amd64-wow64.tar.xz
+#rm -rf wine-9.13-glibc-amd64-wow64.tar.xz
 
 echo "Wine 9.13 (WoW64)..."
 echo ""
