@@ -224,8 +224,8 @@ else
   echo "Wine instalado."
 fi
 
-export PATH="$PREFIX/glibc/bin:$PATH"; unset LD_PRELOAD
-box64 winetricks vcrun2019 corefonts
+#export PATH="$PREFIX/glibc/bin:$PATH"; unset LD_PRELOAD
+#box64 winetricks vcrun2019 corefonts
 
 echo "Done!"
 
