@@ -256,9 +256,9 @@ cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binari
   exit 1
 }
 
-taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 $PREFIX/glibc/opt/autostart.bat &
+#taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 $PREFIX/glibc/opt/autostart.bat &
 # Lançar o jogo com parâmetros otimizados
-#box64 wine BorderlandsGOTY.exe > "$HOME/box64.log" 2>&1 &
+box64 wine BorderlandsGOTY.exe /desktop=shell,800x600 > "$HOME/box64.log" 2>&1 &
 
 # Aguardar por tecla para encerrar
 echo "Pressione qualquer tecla para encerrar o jogo e limpar os processos"
