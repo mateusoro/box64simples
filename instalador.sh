@@ -251,12 +251,11 @@ settings put system user_rotation 1 2>/dev/null || true
 export DISPLAY=:0
 termux-x11 :0 &>/dev/null &
 sleep 3
+am broadcast -a com.termux.x11.SET_ORIENTATION --ez landscape true
 
 echo "Iniciando PulseAudio..."
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1 &>/dev/null
 sleep 1
-
-
 
 
 rm -f "$HOME/box64.log"
