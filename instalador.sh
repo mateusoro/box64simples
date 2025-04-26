@@ -207,6 +207,11 @@ box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /
 cp "$OPT_DIR/Resources/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/syswow64/"
 cp "$OPT_DIR/Resources64/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/system32/"
 
+wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks -O winetricks &>/dev/null
+chmod +x box64droid winetricks
+mv winetricks "$PREFIX/bin/"
+#export PATH="$GLIBC_PREFIX/bin:$PATH"
+
 echo "Done!"
 sleep 10
 
