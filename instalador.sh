@@ -176,46 +176,47 @@ rm -rf "$PREFIX_PATH"
 
 
 rm -rf "/data/data/com.termux/files/usr/glibc/opt/wine"
-echo "Downloading Wine 9.13 (WoW64)..."
+echo "Wine 9.13 (WoW64)..."
 echo ""
 if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
-  wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.13-glibc-amd64-wow64.tar.xz
+    wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.13-glibc-amd64-wow64.tar.xz
+    echo ""
+    echo "Unpacking Wine 9.13 (WoW64)..."
+    tar -xf wine-9.13-glibc-amd64-wow64.tar.xz -C "$PREFIX/glibc/opt"
+    mv "$PREFIX/glibc/opt/wine-git-8d25995-exp-wow64-amd64" "$PREFIX/glibc/opt/wine"
+    echo "Wine prefix! Creating..."
+    WINEDLLOVERRIDES="mscoree=" box64 wineboot
+    cp -r "$OPT_DIR/Shortcuts/"* "$HOME_DIR/.wine/drive_c/ProgramData/Microsoft/Windows/Start Menu/"
+
+    rm -f "$HOME_DIR/.wine/dosdevices/z:" "$HOME_DIR/.wine/dosdevices/d:" || true
+    ln -s /sdcard/Download "$HOME_DIR/.wine/dosdevices/d:" || true
+    ln -s /data/data/com.termux/files "$HOME_DIR/.wine/dosdevices/z:" || true
+
+    echo "Installing DXVK, D8VK and vkd3d-proton..."
+    box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat"
+    box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat"
+
+    box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12 /d native /f
+    box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /d native /f
+
+    cp "$OPT_DIR/Resources/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/syswow64/"
+    cp "$OPT_DIR/Resources64/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/system32/"
+
+    wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks -O winetricks &>/dev/null
+    chmod +x box64droid winetricks
+    mv winetricks "$PREFIX/bin/"
+
 else
-  echo "Arquivo wine-9.13-glibc-amd64-wow64.tar.xz já existe. Pulando download."
+  echo "Arquivo instalado."
 fi
-echo ""
-echo "Unpacking Wine 9.13 (WoW64)..."
-tar -xf wine-9.13-glibc-amd64-wow64.tar.xz -C "$PREFIX/glibc/opt"
-mv "$PREFIX/glibc/opt/wine-git-8d25995-exp-wow64-amd64" "$PREFIX/glibc/opt/wine"
 
 
-echo "Wine prefix! Creating..."
-WINEDLLOVERRIDES="mscoree=" box64 wineboot
-cp -r "$OPT_DIR/Shortcuts/"* "$HOME_DIR/.wine/drive_c/ProgramData/Microsoft/Windows/Start Menu/"
-
-rm -f "$HOME_DIR/.wine/dosdevices/z:" "$HOME_DIR/.wine/dosdevices/d:" || true
-ln -s /sdcard/Download "$HOME_DIR/.wine/dosdevices/d:" || true
-ln -s /data/data/com.termux/files "$HOME_DIR/.wine/dosdevices/z:" || true
-
-echo "Installing DXVK, D8VK and vkd3d-proton..."
-box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat"
-box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat"
-
-box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12 /d native /f
-box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /d native /f
-
-cp "$OPT_DIR/Resources/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/syswow64/"
-cp "$OPT_DIR/Resources64/vkd3d-proton/"* "$HOME_DIR/.wine/drive_c/windows/system32/"
-
-wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks -O winetricks &>/dev/null
-chmod +x box64droid winetricks
-mv winetricks "$PREFIX/bin/"
 export PATH="$GLIBC_PREFIX/bin:$PATH"
 
 box64 winetricks vcrun2019 corefonts
 
 echo "Done!"
-sleep 10
+
 
 # 8) Limpar tela e iniciar serviços
 clear
