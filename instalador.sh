@@ -100,6 +100,73 @@ cp_if_missing "$OPT_DIR/Box64Droid.conf"          "$CONFIG_DIR/Box64Droid.conf"
 cp_if_missing "$OPT_DIR/DXVK_D8VK.conf"           "$CONFIG_DIR/DXVK_D8VK.conf"
 cp_if_missing "$OPT_DIR/DXVK_D8VK_HUD.conf"       "$CONFIG_DIR/DXVK_D8VK_HUD.conf"
 
+export PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin"
+export BOX86_ENV='LD_LIBRARY_PATH=$PREFIX/glibc/lib32'
+export BOX64_PATH="/data/data/com.termux/files/usr/glibc/opt/wine/bin"
+export BOX64_LD_LIBRARY_PATH="/data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/i386-unix:/data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix:/data/data/com.termux/files/usr/glibc/lib/x86_64-linux-gnu"
+export LIBGL_DRIVERS_PATH="/data/data/com.termux/files/usr/glibc/lib32/dri:/data/data/com.termux/files/usr/glibc/lib/dri"
+export VK_ICD_FILENAMES="/data/data/com.termux/files/usr/glibc/share/vulkan/icd.d/freedreno_icd.aarch64.json:/data/data/com.termux/files/usr/glibc/share/vulkan/icd.d/freedreno_icd.armhf.json"
+export DISPLAY=":0"
+export PULSE_SERVER="127.0.0.1"
+export MESA_LOADER_DRIVER_OVERRIDE="zink"
+export MESA_NO_ERROR="1"
+export MESA_VK_WSI_PRESENT_MODE="mailbox"
+export PULSE_LATENCY_MSEC="60"
+export ZINK_DESCRIPTORS="lazy"
+export ZINK_CONTEXT_THREADED="false"
+export ZINK_DEBUG="compact"
+export MESA_SHADER_CACHE_DISABLE="false"
+export MESA_SHADER_CACHE_MAX_SIZE="false"
+export DXVK_CONFIG_FILE="/sdcard/Box64Droid (native)/DXVK_D8VK.conf"
+export FONTCONFIG_PATH="/data/data/com.termux/files/usr/etc/fonts"
+export GALLIUM_HUD="simple,fps"
+export ZINK_DESCRIPTORS="lazy"
+export ZINK_DEBUG="compact"
+export TU_DEBUG="noconform"
+export MANGOHUD="0"
+
+
+export BOX64_BASH="/data/data/com.termux/files/usr/glibc/opt/box64_bash"
+export BOX64_DYNAREC_BIGBLOCK="3"
+export BOX64_ALLOWMISSINGLIBS="1"
+export BOX64_DYNAREC_STRONGMEM="1"
+export BOX64_DYNAREC_X87DOUBLE="0"
+export BOX64_DYNAREC_FASTNAN="0"
+export BOX64_DYNAREC_FASTROUND="1"
+export BOX64_DYNAREC_SAFEFLAGS="2"
+export BOX64_DYNAREC_BLEEDING_EDGE="1"
+export BOX64_DYNAREC_CALLRET="0"
+export BOX64_FUTEX_WAITV="0"
+export BOX64_MMAP32="1"
+export BOX86_BASH="/data/data/com.termux/files/usr/glibc/opt/box86_bash"
+export BOX86_DYNAREC_BIGBLOCK="0"
+export BOX86_ALLOWMISSINGLIBS="1"
+export BOX86_DYNAREC_STRONGMEM="0"
+export BOX86_DYNAREC_X87DOUBLE="0"
+export BOX86_DYNAREC_FASTNAN="0"
+export BOX86_DYNAREC_FASTROUND="1"
+export BOX86_DYNAREC_SAFEFLAGS="1"
+export BOX86_DYNAREC_BLEEDING_EDGE="1"
+export BOX86_DYNAREC_CALLRET="0"
+export BOX86_FUTEX_WAITV="0"
+
+export WINEESYNC="0"
+export WINEESYNC_TERMUX="0"
+export VKD3D_FEATURE_LEVEL="12_0"
+
+
+# Configurar variáveis de ambiente
+
+export WINEDEBUG=-all+err 
+export WINEDLLOVERRIDES="mscoree,mshtml=;wineusb.dll=n,b;winebus.sys=n,b;nsi.sys=n,b"
+
+# Configurações do Box64 para otimizar desempenho
+export BOX64_LOG=0        # Nenhum log (exceto erros fatais) :contentReference[oaicite:0]{index=0}
+export BOX64_DYNAREC_LOG=0  # Desativa todos os logs do Dynarec :contentReference[oaicite:1]{index=1}
+export BOX64_SHOWSEGV=1   # Exibe só detalhes de SIGSEGV (falhas de segmentação) :contentReference[oaicite:2]{index=2}
+
+
+
 # 7) Criar prefixo Wine se não existir
 
 echo "Wine prefix! Creating..."
@@ -148,25 +215,7 @@ echo "Iniciando PulseAudio..."
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1 &>/dev/null
 sleep 1
 
-# Configurar variáveis de ambiente
-export DISPLAY=:0
-export WINEDEBUG=-all+err 
-export WINEDLLOVERRIDES="mscoree,mshtml=;wineusb.dll=n,b;winebus.sys=n,b;nsi.sys=n,b"
 
-# Configurações do Box64 para otimizar desempenho
-export BOX64_LOG=0        # Nenhum log (exceto erros fatais) :contentReference[oaicite:0]{index=0}
-export BOX64_DYNAREC_LOG=0  # Desativa todos os logs do Dynarec :contentReference[oaicite:1]{index=1}
-export BOX64_SHOWSEGV=1   # Exibe só detalhes de SIGSEGV (falhas de segmentação) :contentReference[oaicite:2]{index=2}
-
-export BOX64_DYNAREC=1  # Ativar Dynarec para melhor desempenho
-export BOX64_DYNAREC_BIGBLOCK=3
-export BOX64_DYNAREC_STRONGMEM=1
-export BOX64_DYNAREC_SAFEFLAGS=2
-export BOX64_NOBANNER=1
-export BOX64_JITGDB=0
-export BOX64_SDL2_JOYWASD=0
-export BOX64_PREFER_EMULATED=0
-export BOX64_NORCFILES=0
 
 
 rm -f "$HOME/box64.log"
