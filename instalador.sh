@@ -196,7 +196,6 @@ busybox httpd -f -p 0.0.0.0:8081 -h "$HOME/http_logs" &
 
 echo "Iniciando servidor HTTP na porta 8081 em http://$IP_ADDRESS:8081/box64.log"
 
-
 # Aguardar por tecla para encerrar
 echo "Pressione qualquer tecla para encerrar o jogo e limpar os processos"
 read -n1
