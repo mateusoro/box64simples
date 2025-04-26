@@ -183,7 +183,7 @@ PID=$!
 update_log() {
   while kill -0 $PID 2>/dev/null; do
     cp "$HOME/box64.log" "$HOME/http_logs/box64.log"
-    sleep 5
+    sleep 10
   done
 }
 
