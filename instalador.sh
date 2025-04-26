@@ -170,15 +170,17 @@ export BOX64_SHOWSEGV=1   # Exibe só detalhes de SIGSEGV (falhas de segmentaç�
 
 # 7) Criar prefixo Wine se não existir
 
-PREFIX_PATH="/data/data/com.termux/files/home/.wine"
-echo "Removing previous Wine prefix..."
-rm -rf "$PREFIX_PATH"
+#instalacao limpa
+rm -rf wine-9.13-glibc-amd64-wow64.tar.xz
 
-
-rm -rf "/data/data/com.termux/files/usr/glibc/opt/wine"
 echo "Wine 9.13 (WoW64)..."
 echo ""
 if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
+
+    PREFIX_PATH="/data/data/com.termux/files/home/.wine"
+    echo "Removing previous Wine prefix..."
+    rm -rf "$PREFIX_PATH"
+    rm -rf "/data/data/com.termux/files/usr/glibc/opt/wine"
     wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.13-glibc-amd64-wow64.tar.xz
     echo ""
     echo "Unpacking Wine 9.13 (WoW64)..."
