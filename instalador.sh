@@ -27,9 +27,7 @@ pkill -f 'app_process / com.termux.x11' || true
 echo "Matando qualquer servidor HTTP existente na porta 8081..."
 pkill -f "python -m http.server 8081" || true
 
-echo "Pressione qualquer tecla para continuar"
-read -n1
-clear
+
 echo "Instalando Glibc"
 echo ""
 
@@ -173,9 +171,7 @@ export BOX64_LOG=0        # Nenhum log (exceto erros fatais) :contentReference[o
 export BOX64_DYNAREC_LOG=0  # Desativa todos os logs do Dynarec :contentReference[oaicite:1]{index=1}
 export BOX64_SHOWSEGV=1   # Exibe só detalhes de SIGSEGV (falhas de segmentação) :contentReference[oaicite:2]{index=2}
 
-echo "Pressione qualquer tecla para continuar"
-read -n1
-clear
+
 # 7) Criar prefixo Wine se não existir
 
 #instalacao limpa
@@ -238,11 +234,6 @@ fi
 
 echo "Done!"
 
-echo "Pressione qualquer tecla para continuar"
-read -n1
-
-# 8) Limpar tela e iniciar serviços
-clear
 unset LD_PRELOAD
 
 
@@ -259,7 +250,6 @@ pkill -f "busybox"
 
 echo "Iniciando Termux-X11..."
 # Forçar orientação landscape no Termux-X11
-settings put system user_rotation 1 2>/dev/null || true
 
 export DISPLAY=:0
 termux-x11 :0 &>/dev/null &
