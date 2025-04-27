@@ -278,6 +278,7 @@ ln -sf "$HOME/box64.log" "$HOME/http_logs/box64.log"
 ln -sf "$CONFIG_DIR/Box64Droid.conf" "$HOME_DIR/http_logs/Box64Droid.conf"
 ln -sf "$CONFIG_DIR/DXVK_D8VK.conf" "$HOME_DIR/http_logs/DXVK_D8VK.conf"
 ln -sf "$CONFIG_DIR/DXVK_D8VK_HUD.conf" "$HOME_DIR/http_logs/DXVK_D8VK_HUD.conf"
+cp $PREFIX/glibc/opt/autostart.bat "$HOME/http_logs/autostart.bat"
 
 python -m http.server 8081 --bind 0.0.0.0 --directory "$HOME/http_logs" &
 
@@ -301,11 +302,3 @@ cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binari
 box64 wine explorer /desktop=shell,800x600  $PREFIX/glibc/opt/autostart.bat> "$HOME/box64.log" 2>&1 &
 #box64 wine /sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe> "$HOME/box64.log" 2>&1 &
 
-
-# Aguardar por tecla para encerrar
-echo "Pressione qualquer tecla para encerrar o jogo e limpar os processos"
-read -n1
-box64 wineserver -k
-pkill -f "python -m http.server"
-pkill -f termux-x11
-pkill -f "busybox"
