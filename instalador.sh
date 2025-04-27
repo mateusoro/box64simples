@@ -1,6 +1,8 @@
 #!/bin/bash
 
 #rm -f instalador.sh && curl -s -f -L --retry 3 --connect-timeout 3 --max-time 10 --retry-delay 1 --raw -o instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
+
+
 #export PATH="$PREFIX/glibc/bin:$PATH"; unset LD_PRELOAD 
 
 clear
@@ -8,7 +10,7 @@ echo "Instalando dependencias"
 echo ""
 
 # Verificar se o armazenamento já está montado e acessível
-termux-setup-storage
+#termux-setup-storage
 
 
 #termux-wake-lock
@@ -49,12 +51,7 @@ HOME_DIR=${HOME:-/data/data/com.termux/files/home}
 
 
 
-# 1) Criar links simbólicos para os binários do Wine
-ln -s $PREFIX/glibc/opt/wine/bin/wine $PREFIX/glibc/bin/wine
-ln -s $PREFIX/glibc/opt/wine/bin/wine64 $PREFIX/glibc/bin/wine64
-ln -s $PREFIX/glibc/opt/wine/bin/wineserver $PREFIX/glibc/bin/wineserver
-ln -s $PREFIX/glibc/opt/wine/bin/wineboot $PREFIX/glibc/bin/wineboot
-ln -s $PREFIX/glibc/opt/wine/bin/winecfg $PREFIX/glibc/bin/winecfg
+
 
 # 3) Compilar o box64 no prefixo glibc
 
@@ -171,11 +168,12 @@ export BOX64_LOG=0        # Nenhum log (exceto erros fatais) :contentReference[o
 export BOX64_DYNAREC_LOG=0  # Desativa todos os logs do Dynarec :contentReference[oaicite:1]{index=1}
 export BOX64_SHOWSEGV=1   # Exibe só detalhes de SIGSEGV (falhas de segmentação) :contentReference[oaicite:2]{index=2}
 
+export BOX64_BASH=/data/data/com.termux/files/usr/glibc/bin/bash
 
 # 7) Criar prefixo Wine se não existir
 
 #instalacao limpa
-#rm -rf wine-9.13-glibc-amd64-wow64.tar.xz
+rm -rf wine-9.13-glibc-amd64-wow64.tar.xz
 
 echo "Wine 9.13 (WoW64)..."
 echo ""
@@ -189,7 +187,15 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     echo ""
     echo "Unpacking Wine 9.13 (WoW64)..."
     tar -xf wine-9.13-glibc-amd64-wow64.tar.xz -C "$PREFIX/glibc/opt"
-    mv "$PREFIX/glibc/opt/wine-git-8d25995-exp-wow64-amd64" "$PREFIX/glibc/opt/wine"
+    mv "$PREFIX/glibc/opt/wine-9.13-glibc-amd64-wow64" "$PREFIX/glibc/opt/wine"
+
+    # 1) Criar links simbólicos para os binários do Wine
+    ln -s $PREFIX/glibc/opt/wine/bin/wine $PREFIX/glibc/bin/wine
+    ln -s $PREFIX/glibc/opt/wine/bin/wine64 $PREFIX/glibc/bin/wine64
+    ln -s $PREFIX/glibc/opt/wine/bin/wineserver $PREFIX/glibc/bin/wineserver
+    ln -s $PREFIX/glibc/opt/wine/bin/wineboot $PREFIX/glibc/bin/wineboot
+    ln -s $PREFIX/glibc/opt/wine/bin/winecfg $PREFIX/glibc/bin/winecfg
+
     echo "Wine prefix! Creating..."
     echo "Pressione qualquer tecla para continuar"
     read -n1

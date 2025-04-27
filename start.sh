@@ -92,6 +92,6 @@ python -m http.server 8081 --bind 0.0.0.0 --directory "$HOME/http_logs" &
 am start -n com.termux.x11/com.termux.x11.MainActivity &
 
 unset LD_PRELOAD
-box64 wineboot --init &> "$HOME/box64.log" 2>&1 &
+box64 wineboot &> "$HOME/box64.log" 2>&1 &
 
 #box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" &> "$HOME/box64.log" 2>&1 &
