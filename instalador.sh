@@ -12,7 +12,7 @@ if [ ! -d "/storage/emulated/0" ] && [ ! -d "$HOME/storage" ]; then
   termux-setup-storage
 fi
 
-termux-wake-lock
+#termux-wake-lock
 
 
 apt-get update &>/dev/null
