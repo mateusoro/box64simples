@@ -8,9 +8,8 @@ echo "Instalando dependencias"
 echo ""
 
 # Verificar se o armazenamento já está montado e acessível
-if [ ! -d "/storage/emulated/0" ] && [ ! -d "$HOME/storage" ]; then
-  termux-setup-storage
-fi
+termux-setup-storage
+
 
 #termux-wake-lock
 
