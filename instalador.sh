@@ -180,7 +180,7 @@ clear
 # 7) Criar prefixo Wine se não existir
 
 #instalacao limpa
-rm -rf wine-9.13-glibc-amd64-wow64.tar.xz
+#rm -rf wine-9.13-glibc-amd64-wow64.tar.xz
 
 echo "Wine 9.13 (WoW64)..."
 echo ""
