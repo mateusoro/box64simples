@@ -50,7 +50,7 @@ OPT_DIR="$GLIBC_PREFIX/opt"
 BIN_DIR="$GLIBC_PREFIX/bin"
 HOME_DIR=${HOME:-/data/data/com.termux/files/home}
 
-
+rm -f "$HOME/box64.log"
 
 
 
@@ -103,7 +103,7 @@ cp_if_missing "$OPT_DIR/Box64Droid.conf"          "$CONFIG_DIR/Box64Droid.conf"
 cp_if_missing "$OPT_DIR/DXVK_D8VK.conf"           "$CONFIG_DIR/DXVK_D8VK.conf"
 cp_if_missing "$OPT_DIR/DXVK_D8VK_HUD.conf"       "$CONFIG_DIR/DXVK_D8VK_HUD.conf"
 
-export PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin"
+#export PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin"
 export BOX86_ENV='LD_LIBRARY_PATH=$PREFIX/glibc/lib32'
 export BOX64_PATH="/data/data/com.termux/files/usr/glibc/opt/wine/bin"
 export BOX64_LD_LIBRARY_PATH="/data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/i386-unix:/data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix:/data/data/com.termux/files/usr/glibc/lib/x86_64-linux-gnu"
@@ -200,10 +200,10 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     export PATH="$PREFIX/glibc/bin:$PATH"
 
     echo "Wine prefix! Creating..."
-    echo "Pressione qualquer tecla para continuar"
+    echo "Pressione para iniciar o boot"
     read -n1
-    WINEDLLOVERRIDES="mscoree=" box64 wineboot
-    echo "Pressione qualquer tecla para continuar"
+    WINEDLLOVERRIDES="mscoree=" box64 wineboot &> "$HOME/box64.log" 2>&1 &
+    echo "boot finalizado"
     read -n1
 
     cp -r "$OPT_DIR/Shortcuts/"* "$HOME_DIR/.wine/drive_c/ProgramData/Microsoft/Windows/Start Menu/"
