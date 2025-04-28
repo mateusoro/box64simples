@@ -3,7 +3,8 @@
 #rm -f instalador.sh && curl -s -f -L --retry 3 --connect-timeout 3 --max-time 10 --retry-delay 1 --raw -o instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
 
 
-#export PATH="$PREFIX/glibc/bin:$PATH"; unset LD_PRELOAD 
+export PATH="$PREFIX/glibc/bin:$PATH"
+unset LD_PRELOAD 
 
 clear
 echo "Instalando dependencias"
@@ -187,14 +188,16 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     echo ""
     echo "Unpacking Wine 9.13 (WoW64)..."
     tar -xf wine-9.13-glibc-amd64-wow64.tar.xz -C "$PREFIX/glibc/opt"
-    mv "$PREFIX/glibc/opt/wine-9.13-glibc-amd64-wow64" "$PREFIX/glibc/opt/wine"
-
-    # 1) Criar links simbólicos para os binários do Wine
-    ln -s $PREFIX/glibc/opt/wine/bin/wine $PREFIX/glibc/bin/wine
-    ln -s $PREFIX/glibc/opt/wine/bin/wine64 $PREFIX/glibc/bin/wine64
-    ln -s $PREFIX/glibc/opt/wine/bin/wineserver $PREFIX/glibc/bin/wineserver
-    ln -s $PREFIX/glibc/opt/wine/bin/wineboot $PREFIX/glibc/bin/wineboot
-    ln -s $PREFIX/glibc/opt/wine/bin/winecfg $PREFIX/glibc/bin/winecfg
+    mv "$PREFIX/glibc/opt/wine-git-8d25995-exp-wow64-amd64" "$PREFIX/glibc/opt/wine"
+    
+    rm -f "$PREFIX/glibc/bin/"{wine,wine64,wineserver,wineboot,winecfg}
+    ln -sf "$PREFIX/glibc/opt/wine/bin/wine"      "$PREFIX/glibc/bin/wine"
+    ln -sf "$PREFIX/glibc/opt/wine/bin/wine64"    "$PREFIX/glibc/bin/wine64"
+    ln -sf "$PREFIX/glibc/opt/wine/bin/wineserver" "$PREFIX/glibc/bin/wineserver"
+    ln -sf "$PREFIX/glibc/opt/wine/bin/wineboot"   "$PREFIX/glibc/bin/wineboot"
+    ln -sf "$PREFIX/glibc/opt/wine/bin/winecfg"    "$PREFIX/glibc/bin/winecfg"
+    
+    export PATH="$PREFIX/glibc/bin:$PATH"
 
     echo "Wine prefix! Creating..."
     echo "Pressione qualquer tecla para continuar"
