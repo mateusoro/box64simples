@@ -161,7 +161,7 @@ export VKD3D_FEATURE_LEVEL="12_0"
 
 # Configurar variáveis de ambiente
 
-export WINEDEBUG=+err+all,+loaddll,+module
+export WINEDEBUG=+err-all
 export WINEDLLOVERRIDES="mscoree,mshtml=;wineusb.dll=n,b;winebus.sys=n,b;nsi.sys=n,b"
 
 # Configurações do Box64 para otimizar desempenho
@@ -175,6 +175,7 @@ export BOX64_BASH=/data/data/com.termux/files/usr/glibc/bin/bash
 
 #instalacao limpa
 rm -rf wine-9.13-glibc-amd64-wow64.tar.xz
+rm -f "$HOME/box64.log"
 
 echo "Wine 9.13 (WoW64)..."
 echo ""
@@ -269,8 +270,6 @@ echo "Iniciando PulseAudio..."
 pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1 &>/dev/null
 sleep 1
 
-
-rm -f "$HOME/box64.log"
 mkdir -p "$HOME_DIR/http_logs"
 ln -sf "$HOME/box64.log" "$HOME/http_logs/box64.log"
 ln -sf "$CONFIG_DIR/Box64Droid.conf" "$HOME_DIR/http_logs/Box64Droid.conf"
