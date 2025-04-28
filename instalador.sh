@@ -103,7 +103,7 @@ cp_if_missing "$OPT_DIR/Box64Droid.conf"          "$CONFIG_DIR/Box64Droid.conf"
 cp_if_missing "$OPT_DIR/DXVK_D8VK.conf"           "$CONFIG_DIR/DXVK_D8VK.conf"
 cp_if_missing "$OPT_DIR/DXVK_D8VK_HUD.conf"       "$CONFIG_DIR/DXVK_D8VK_HUD.conf"
 
-#export PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin"
+export PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin"
 export BOX86_ENV='LD_LIBRARY_PATH=$PREFIX/glibc/lib32'
 export BOX64_PATH="/data/data/com.termux/files/usr/glibc/opt/wine/bin"
 export BOX64_LD_LIBRARY_PATH="/data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/i386-unix:/data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix:/data/data/com.termux/files/usr/glibc/lib/x86_64-linux-gnu"
@@ -202,7 +202,7 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     echo "Wine prefix! Creating..."
     echo "Pressione para iniciar o boot"
     read -n1
-    WINEDLLOVERRIDES="mscoree=" box64 wineboot &> "$HOME/box64.log" 2>&1 &
+    unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wineboot &> "$HOME/box64.log" 2>&1 &
     echo "boot finalizado"
     read -n1
 
@@ -215,15 +215,15 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     echo "Pressione qualquer tecla para continuar"
     read -n1
     echo "Installing DXVK, D8VK and vkd3d-proton..."
-    box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat"
+    unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat" &> "$HOME/box64.log" 2>&1 &
     echo "Pressione qualquer tecla para continuar"
     read -n1
-    box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat"
+    unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat" &> "$HOME/box64.log" 2>&1 &
     echo "Pressione qualquer tecla para continuar"
     read -n1
 
-    box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12 /d native /f
-    box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /d native /f
+    unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12 /d native /f &> "$HOME/box64.log" 2>&1 &
+    unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /d native /f &> "$HOME/box64.log" 2>&1 &
     echo "Pressione qualquer tecla para continuar"
     read -n1
 
@@ -300,4 +300,4 @@ cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binari
 #box64 wine explorer /desktop=shell,800x600  $PREFIX/glibc/opt/autostart.bat> "$HOME/box64.log" 2>&1 &
 #box64 wine /sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe> "$HOME/box64.log" 2>&1 &
 
-box64 wineboot --init &> "$HOME/box64.log" 2>&1 &
+unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wineboot --init &> "$HOME/box64.log" 2>&1 &

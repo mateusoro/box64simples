@@ -94,6 +94,8 @@ am start -n com.termux.x11/com.termux.x11.MainActivity &
 
 unset LD_PRELOAD
 export PATH="$PREFIX/glibc/bin:$PATH"
-box64 wineboot --init &> "$HOME/box64.log" 2>&1 &
+
+unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wineboot --init 
+&> "$HOME/box64.log" 2>&1 &
 
 #box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" &> "$HOME/box64.log" 2>&1 &
