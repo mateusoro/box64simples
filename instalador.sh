@@ -203,7 +203,7 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     echo "Wine prefix! Creating..."
     echo "Pressione para iniciar o boot"
     read -n1
-    unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wineboot
+    box64 wineboot
     echo "boot finalizado"
     read -n1
 
@@ -216,15 +216,15 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     echo "Pressione qualquer tecla para continuar"
     read -n1
     echo "Installing DXVK, D8VK and vkd3d-proton..."
-    unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat" 
+    box64 wine "$OPT_DIR/Resources64/Run if you will install on top of WineD3D.bat" 
     echo "Pressione qualquer tecla para continuar"
     read -n1
-    unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat"
+    box64 wine "$OPT_DIR/Resources64/DXVK2.3/DXVK2.3.bat"
     echo "Pressione qualquer tecla para continuar"
     read -n1
 
-    unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12 /d native /f
-    unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /d native /f
+    box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12 /d native /f
+    box64 wine reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v d3d12core /d native /f
     echo "Pressione qualquer tecla para continuar"
     read -n1
 
@@ -300,4 +300,5 @@ cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binari
 #box64 wine /sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe> "$HOME/box64.log" 2>&1 &
 
 #unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wineboot --init &> "$HOME/box64.log" 2>&1 &
-unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin";BOX64_BASH=/data/data/com.termux/files/usr/glibc/bin/bash; box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe"
+unset LD_PRELOAD
+box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe"
