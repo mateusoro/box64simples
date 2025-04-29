@@ -95,7 +95,18 @@ am start -n com.termux.x11/com.termux.x11.MainActivity &
 unset LD_PRELOAD
 export PATH="$PREFIX/glibc/bin:$PATH"
 
-unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wineboot --init 
-&> "$HOME/box64.log" 2>&1 &
+(
+  rm -f "$HOME/box64.log"
+  unset LD_PRELOAD
+  export PATH="/data/data/com.termux/files/usr/glibc/bin:$PATH"
+  box64 wineboot --init
+) &> "$HOME/box64.log" &
 
-#box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" &> "$HOME/box64.log" 2>&1 &
+
+
+( unset LD_PRELOAD; export BOX64_BASH=/data/data/com.termux/files/usr/glibc/bin/bash; export PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin:$PATH"; box64 wineboot --init ) &> "$HOME/box64.log" &
+
+rm -f "$HOME/box64.log"
+unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin";BOX64_BASH=/data/data/com.termux/files/usr/glibc/bin/bash; box64 wineboot --init&> "$HOME/box64.log" 2>&1 &
+unset LD_PRELOAD;box64 wineboot --init &> "$HOME/box64.log" 2>&1 &
+#unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin";BOX64_BASH=/data/data/com.termux/files/usr/glibc/bin/bash; box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe" &> "$HOME/box64.log" 2>&1 &
