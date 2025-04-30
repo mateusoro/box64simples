@@ -2,6 +2,8 @@
 
 #rm -f instalador.sh && curl -s -f -L --retry 3 --connect-timeout 3 --max-time 10 --retry-delay 1 --raw -o instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
 
+echo "Iniciando"
+
 carregar_exports() {
   # padrões caso não estejam definidos
   unset LD_PRELOAD 
