@@ -2,7 +2,11 @@
 
 #rm -f instalador.sh && curl -s -f -L --retry 3 --connect-timeout 3 --max-time 10 --retry-delay 1 --raw -o instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
 
-echo "Iniciando"
+#curl -s -f -L --retry 3 --connect-timeout 3 --max-time 10 --retry-delay 1 --raw -o instalador.sh http://192.168.0.12:5500/instalador.sh && chmod +x instalador.sh && ./instalador.sh
+
+#wget -O ./box64.log http://192.168.0.21:8081/box64.log
+
+echo "Iniciando1"
 
 carregar_exports() {
   # padrões caso não estejam definidos
@@ -210,7 +214,7 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     echo "Wine prefix! Creating..."
     echo "Pressione para iniciar o boot"
     read -n1
-    box64 wineboot
+    box64 wineboot --init
     echo "boot finalizado"
     read -n1
 
@@ -306,6 +310,7 @@ cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binari
 
 (
   carregar_exports
+  box64 winetricks -q vcrun2005 vcrun2008 dotnet20 d3dx9 d3dcompiler_43 physx
   box64 wine explorer /desktop=shell,800x600 "$PREFIX/glibc/opt/autostart.bat"
 ) > "$HOME/box64.log" 2>&1 &
 

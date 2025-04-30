@@ -1,0 +1,72 @@
+002c:err:wineboot:process_run_key Error running cmd L"C:\\windows\\system32\\winemenubuilder.exe -a -r" (2).
+00bc:err:nsi:poll_netlink bind failed, errno 13.
+00c8:err:system:NtUserChangeDisplaySettings Changing (null) display settings returned -2.
+00c8:err:explorer:initialize_display_settings Failed to set primary display settings.
+0134:err:environ:init_peb starting L"Z:\\usr\\glibc\\opt\\Input Bridge 0.1.9\\ib.exe" in experimental wow64 mode
+0124:fixme:ntdll:NtQuerySystemInformation info_class SYSTEM_PERFORMANCE_INFORMATION
+0124:fixme:advapi:LsaAddAccountRights (000000000000CAFE,00000000806D5130,00000000800EF9E0,0x00000001) stub
+014c:err:environ:init_peb starting L"Z:\\usr\\glibc\\opt\\Resources\\f5taskmgr.exe" in experimental wow64 mode
+0160:err:environ:init_peb starting L"C:\\users\\wine\\AppData\\Local\\Temp\\IxefZiP.exe" in experimental wow64 mode
+0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
+014c:fixme:heap:RtlSetHeapInformation HEAP_INFORMATION_CLASS 1 not implemented!
+0168:fixme:process:WinExec Strange error set by CreateProcess: 193
+0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
+0168:fixme:urlmon:DownloadBSC_OnStopBinding No cache file
+0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
+0168:fixme:urlmon:DownloadBSC_OnStopBinding No cache file
+0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
+0168:fixme:process:WinExec Strange error set by CreateProcess: 193
+0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
+0168:fixme:urlmon:DownloadBSC_OnStopBinding No cache file
+0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
+017c:err:wininet:open_http_connection create_netconn failed: 12029
+0168:fixme:urlmon:DownloadBSC_OnStopBinding No cache file
+0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
+017c:err:wininet:open_http_connection create_netconn failed: 12029
+0168:fixme:urlmon:DownloadBSC_OnStopBinding No cache file
+018c:err:environ:init_peb starting L"C:\\windows\\syswow64\\cmd.exe" in experimental wow64 mode
+00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
+00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
+00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
+00c8:fixme:exec:SHELL_execute flags ignored: 0x00000004
+00c8:fixme:exec:SHELL_execute flags ignored: 0x00004000
+00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
+00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
+00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
+00c8:fixme:exec:SHELL_execute flags ignored: 0x00000004
+00c8:fixme:exec:SHELL_execute flags ignored: 0x00004000
+01c0:err:environ:init_peb starting L"Z:\\usr\\glibc\\opt\\Resources\\Graphics tests\\EnvMappingDX9\\CubeMap.exe" in experimental wow64 mode
+01c8:err:environ:init_peb starting L"C:\\users\\wine\\AppData\\Local\\Temp\\SkjbQP.exe" in experimental wow64 mode
+01d0:err:environ:init_peb starting L"C:\\windows\\syswow64\\cmd.exe" in experimental wow64 mode
+SPIR-V WARNING:
+    In file ../src/compiler/spirv/spirv_to_nir.c:1747
+    Image Type operand of OpTypeSampledImage should not have a Dim of Buffer.
+    2104 bytes into the SPIR-V binary
+0124:fixme:exec:SHELL_execute flags ignored: 0x00000100
+01f4:fixme:ver:GetCurrentPackageId (000000008062D680 0000000000000000): stub
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142A00000)
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000180000000)
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142B90000)
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142DC0000)
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142EA0000)
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142F40000)
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142CC0000)
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142C00000)
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD620000)
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD640000)
+01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD600000)
+01f4:fixme:ntdll:NtQuerySystemInformation info_class SYSTEM_PERFORMANCE_INFORMATION
+01f4:fixme:gameux:GameExplorerImpl_VerifyAccess (0000000081BCC9D0, L"D:\\Jogos Winlator\\Borderlands Game of the Year Enhanced\\Binaries\\Win64\\BorderlandsGOTY.exe", 000000008062F250)
+0124:fixme:exec:SHELL_execute flags ignored: 0x00000100
+0228:fixme:ver:GetCurrentPackageId (000000008062D680 0000000000000000): stub
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142A00000)
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000180000000)
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142B90000)
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142DC0000)
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142EA0000)
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142F40000)
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142CC0000)
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142C00000)
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD620000)
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD640000)
+0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD600000)
