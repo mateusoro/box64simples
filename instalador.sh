@@ -92,7 +92,7 @@ carregar_exports() {
 
 
 clear
-echo "Instalando dependencias"
+echo "Instalando dependencias0"
 echo ""
 
 # Verificar se o armazenamento já está montado e acessível
@@ -267,7 +267,7 @@ echo "Iniciando Termux-X11..."
 # Forçar orientação landscape no Termux-X11
 carregar_exports
 
-termux-x11 :0
+termux-x11 :0 &
 sleep 3
 am broadcast -a com.termux.x11.SET_ORIENTATION --ez landscape true
 
