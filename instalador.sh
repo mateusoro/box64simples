@@ -2,9 +2,94 @@
 
 #rm -f instalador.sh && curl -s -f -L --retry 3 --connect-timeout 3 --max-time 10 --retry-delay 1 --raw -o instalador.sh https://raw.githubusercontent.com/mateusoro/box64simples/refs/heads/main/instalador.sh && chmod +x instalador.sh && ./instalador.sh
 
+carregar_exports() {
+  # padrões caso não estejam definidos
+  unset LD_PRELOAD 
 
-export PATH="$PREFIX/glibc/bin:$PATH"
-unset LD_PRELOAD 
+  PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
+  HOME_DIR=${HOME:-/data/data/com.termux/files/home}
+  GLIBC_PREFIX="$PREFIX/glibc"
+  OPT_DIR="$GLIBC_PREFIX/opt"
+
+  # vars de PATH
+  export PATH="$GLIBC_PREFIX/bin:$PREFIX/glibc/bin:$PREFIX/bin:$PATH"
+
+  # prefixos e bibliotecas
+  export GLIBC_PREFIX
+  export BOX86_ENV='LD_LIBRARY_PATH=$PREFIX/glibc/lib32'
+  export BOX64_PATH="$OPT_DIR/wine/bin"
+  export BOX64_LD_LIBRARY_PATH="$OPT_DIR/wine/lib/wine/i386-unix:$OPT_DIR/wine/lib/wine/x86_64-unix:$GLIBC_PREFIX/lib/x86_64-linux-gnu"
+  export LIBGL_DRIVERS_PATH="$GLIBC_PREFIX/lib32/dri:$GLIBC_PREFIX/lib/dri"
+  export VK_ICD_FILENAMES="$GLIBC_PREFIX/share/vulkan/icd.d/freedreno_icd.aarch64.json:$GLIBC_PREFIX/share/vulkan/icd.d/freedreno_icd.armhf.json"
+
+  # display e áudio
+  export DISPLAY=":0"
+  export PULSE_SERVER="127.0.0.1"
+  export PULSE_LATENCY_MSEC="60"
+
+  # mesa/zink/vkd3d
+  export MESA_LOADER_DRIVER_OVERRIDE="zink"
+  export MESA_NO_ERROR="1"
+  export MESA_VK_WSI_PRESENT_MODE="mailbox"
+  export ZINK_DESCRIPTORS="lazy"
+  export ZINK_CONTEXT_THREADED="false"
+  export ZINK_DEBUG="compact"
+  export TU_DEBUG="noconform"
+  export MANGOHUD="0"
+  export VKD3D_FEATURE_LEVEL="12_0"
+
+  # DXVK/D8VK
+  export DXVK_CONFIG_FILE="$OPT_DIR/DXVK_D8VK.conf"
+  export DXVK_HUD="fps,version,devinfo,gpuload"
+
+  # fontes e HUD
+  export FONTCONFIG_PATH="$PREFIX/etc/fonts"
+  export GALLIUM_HUD="simple,fps"
+
+  # Wine
+  export WINEESYNC="0"
+  export WINEESYNC_TERMUX="0"
+  export WINEDEBUG="+err-all"
+  export WINEDLLOVERRIDES="mscoree,mshtml=;wineusb.dll=n,b;winebus.sys=n,b;nsi.sys=n,b"
+
+  # logs do Box64
+  export BOX64_LOG="0"
+  export BOX64_DYNAREC_LOG="0"
+  export BOX64_SHOWSEGV="1"
+
+  # binários alternativos do Bash para Box64/Box86
+  export BOX64_BASH="$GLIBC_PREFIX/opt/box64_bash"
+  export BOX86_BASH="$GLIBC_PREFIX/opt/box86_bash"
+
+  # flags de dynarec Box64
+  export BOX64_DYNAREC_BIGBLOCK="3"
+  export BOX64_ALLOWMISSINGLIBS="1"
+  export BOX64_DYNAREC_STRONGMEM="1"
+  export BOX64_DYNAREC_X87DOUBLE="0"
+  export BOX64_DYNAREC_FASTNAN="0"
+  export BOX64_DYNAREC_FASTROUND="1"
+  export BOX64_DYNAREC_SAFEFLAGS="2"
+  export BOX64_DYNAREC_BLEEDING_EDGE="1"
+  export BOX64_DYNAREC_CALLRET="0"
+  export BOX64_FUTEX_WAITV="0"
+  export BOX64_MMAP32="1"
+
+  # flags de dynarec Box86
+  export BOX86_DYNAREC_BIGBLOCK="3"
+  export BOX86_ALLOWMISSINGLIBS="1"
+  export BOX86_DYNAREC_STRONGMEM="1"
+  export BOX86_DYNAREC_X87DOUBLE="0"
+  export BOX86_DYNAREC_FASTNAN="0"
+  export BOX86_DYNAREC_FASTROUND="1"
+  export BOX86_DYNAREC_SAFEFLAGS="2"
+  export BOX86_DYNAREC_BLEEDING_EDGE="1"
+  export BOX86_DYNAREC_CALLRET="0"
+  export BOX86_FUTEX_WAITV="0"
+
+  # sobrescreve BOX64_BASH para o shell correto
+  export BOX64_BASH="$GLIBC_PREFIX/bin/bash"
+}
+
 
 clear
 echo "Instalando dependencias"
@@ -42,24 +127,12 @@ else
   echo "Glibc já instalado. Pulando a instalação."
 fi
 
-unset LD_PRELOAD
-# Variáveis
-PREFIX=${PREFIX:-/data/data/com.termux/files/usr}
-GLIBC_PREFIX="$PREFIX/glibc"
-OPT_DIR="$GLIBC_PREFIX/opt"
-BIN_DIR="$GLIBC_PREFIX/bin"
-HOME_DIR=${HOME:-/data/data/com.termux/files/home}
+carregar_exports
 
 rm -f "$HOME/box64.log"
 
-
-
 # 3) Compilar o box64 no prefixo glibc
-
-unset LD_PRELOAD
-export GLIBC_PREFIX
-export PATH="$GLIBC_PREFIX/bin:$PATH"
-
+carregar_exports
 
 if [ ! -e "$GLIBC_PREFIX/bin/box64" ]; then
   cd "$HOME_DIR"
@@ -82,8 +155,7 @@ else
 fi
 
 # 4) Atualizar variáveis de ambiente para esta sessão
-export GLIBC_PREFIX
-export PATH="$GLIBC_PREFIX/bin:$PATH"
+carregar_exports
 
 # 5) Reiniciar wineserver (silencioso) e matar pulseaudio/X11
 box64 wineserver -k #&>/dev/null
@@ -103,74 +175,6 @@ cp_if_missing "$OPT_DIR/Box64Droid.conf"          "$CONFIG_DIR/Box64Droid.conf"
 cp_if_missing "$OPT_DIR/DXVK_D8VK.conf"           "$CONFIG_DIR/DXVK_D8VK.conf"
 cp_if_missing "$OPT_DIR/DXVK_D8VK_HUD.conf"       "$CONFIG_DIR/DXVK_D8VK_HUD.conf"
 
-export PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin"
-export BOX86_ENV='LD_LIBRARY_PATH=$PREFIX/glibc/lib32'
-export BOX64_PATH="/data/data/com.termux/files/usr/glibc/opt/wine/bin"
-export BOX64_LD_LIBRARY_PATH="/data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/i386-unix:/data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix:/data/data/com.termux/files/usr/glibc/lib/x86_64-linux-gnu"
-export LIBGL_DRIVERS_PATH="/data/data/com.termux/files/usr/glibc/lib32/dri:/data/data/com.termux/files/usr/glibc/lib/dri"
-export VK_ICD_FILENAMES="/data/data/com.termux/files/usr/glibc/share/vulkan/icd.d/freedreno_icd.aarch64.json:/data/data/com.termux/files/usr/glibc/share/vulkan/icd.d/freedreno_icd.armhf.json"
-export DISPLAY=":0"
-export PULSE_SERVER="127.0.0.1"
-export MESA_LOADER_DRIVER_OVERRIDE="zink"
-export MESA_NO_ERROR="1"
-export MESA_VK_WSI_PRESENT_MODE="mailbox"
-export PULSE_LATENCY_MSEC="60"
-export ZINK_DESCRIPTORS="lazy"
-export ZINK_CONTEXT_THREADED="false"
-export ZINK_DEBUG="compact"
-export MESA_SHADER_CACHE_DISABLE="false"
-export MESA_SHADER_CACHE_MAX_SIZE="false"
-export DXVK_CONFIG_FILE="/sdcard/Box64Droid (native)/DXVK_D8VK.conf"
-export FONTCONFIG_PATH="/data/data/com.termux/files/usr/etc/fonts"
-export GALLIUM_HUD="simple,fps"
-export ZINK_DESCRIPTORS="lazy"
-export ZINK_DEBUG="compact"
-export TU_DEBUG="noconform"
-export MANGOHUD="0"
-
-export DXVK_HUD="fps,version,devinfo,gpuload"
-
-export BOX64_BASH="/data/data/com.termux/files/usr/glibc/opt/box64_bash"
-export BOX64_DYNAREC_BIGBLOCK="3"
-export BOX64_ALLOWMISSINGLIBS="1"
-export BOX64_DYNAREC_STRONGMEM="1"
-export BOX64_DYNAREC_X87DOUBLE="0"
-export BOX64_DYNAREC_FASTNAN="0"
-export BOX64_DYNAREC_FASTROUND="1"
-export BOX64_DYNAREC_SAFEFLAGS="2"
-export BOX64_DYNAREC_BLEEDING_EDGE="1"
-export BOX64_DYNAREC_CALLRET="0"
-export BOX64_FUTEX_WAITV="0"
-export BOX64_MMAP32="1"
-export BOX86_BASH="/data/data/com.termux/files/usr/glibc/opt/box86_bash"
-export BOX86_DYNAREC_BIGBLOCK="0"
-export BOX86_ALLOWMISSINGLIBS="1"
-export BOX86_DYNAREC_STRONGMEM="0"
-export BOX86_DYNAREC_X87DOUBLE="0"
-export BOX86_DYNAREC_FASTNAN="0"
-export BOX86_DYNAREC_FASTROUND="1"
-export BOX86_DYNAREC_SAFEFLAGS="1"
-export BOX86_DYNAREC_BLEEDING_EDGE="1"
-export BOX86_DYNAREC_CALLRET="0"
-export BOX86_FUTEX_WAITV="0"
-
-export WINEESYNC="0"
-export WINEESYNC_TERMUX="0"
-export VKD3D_FEATURE_LEVEL="12_0"
-
-
-# Configurar variáveis de ambiente
-
-export WINEDEBUG=+err-all
-export WINEDLLOVERRIDES="mscoree,mshtml=;wineusb.dll=n,b;winebus.sys=n,b;nsi.sys=n,b"
-
-# Configurações do Box64 para otimizar desempenho
-export BOX64_LOG=0        # Nenhum log (exceto erros fatais) :contentReference[oaicite:0]{index=0}
-export BOX64_DYNAREC_LOG=0  # Desativa todos os logs do Dynarec :contentReference[oaicite:1]{index=1}
-export BOX64_SHOWSEGV=1   # Exibe só detalhes de SIGSEGV (falhas de segmentação) :contentReference[oaicite:2]{index=2}
-
-export BOX64_BASH=/data/data/com.termux/files/usr/glibc/bin/bash
-
 # 7) Criar prefixo Wine se não existir
 
 #instalacao limpa
@@ -181,6 +185,7 @@ echo "Wine 9.13 (WoW64)..."
 echo ""
 if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
 
+    carregar_exports
     PREFIX_PATH="/data/data/com.termux/files/home/.wine"
     echo "Removing previous Wine prefix..."
     rm -rf "$PREFIX_PATH"
@@ -198,7 +203,7 @@ if [ ! -f wine-9.13-glibc-amd64-wow64.tar.xz ]; then
     ln -sf "$PREFIX/glibc/opt/wine/bin/wineboot"   "$PREFIX/glibc/bin/wineboot"
     ln -sf "$PREFIX/glibc/opt/wine/bin/winecfg"    "$PREFIX/glibc/bin/winecfg"
     
-    export PATH="$PREFIX/glibc/bin:$PATH"
+    carregar_exports
 
     echo "Wine prefix! Creating..."
     echo "Pressione para iniciar o boot"
@@ -244,7 +249,7 @@ fi
 
 echo "Done!"
 
-unset LD_PRELOAD
+carregar_exports
 
 
 # Matar processos existentes que podem interferir
@@ -260,9 +265,9 @@ pkill -f "busybox"
 
 echo "Iniciando Termux-X11..."
 # Forçar orientação landscape no Termux-X11
+carregar_exports
 
-export DISPLAY=:0
-termux-x11 :0 &>/dev/null &
+termux-x11 :0
 sleep 3
 am broadcast -a com.termux.x11.SET_ORIENTATION --ez landscape true
 
@@ -300,5 +305,5 @@ cd "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binari
 #box64 wine /sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe> "$HOME/box64.log" 2>&1 &
 
 #unset LD_PRELOAD;PATH="/data/data/com.termux/files/usr/glibc/bin:/data/data/com.termux/files/usr/bin" box64 wineboot --init &> "$HOME/box64.log" 2>&1 &
-unset LD_PRELOAD
-box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe"
+carregar_exports
+#box64 wine "/sdcard/Download/Jogos Winlator/Borderlands Game of the Year Enhanced/Binaries/Win64/BorderlandsGOTY.exe"
