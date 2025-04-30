@@ -98,7 +98,6 @@ echo ""
 # Verificar se o armazenamento já está montado e acessível
 #termux-setup-storage
 
-
 #termux-wake-lock
 
 carregar_exports
