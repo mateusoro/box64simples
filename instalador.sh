@@ -101,6 +101,7 @@ echo ""
 
 #termux-wake-lock
 
+carregar_exports
 
 apt-get update &>/dev/null
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade &>/dev/null
