@@ -1,72 +1,840 @@
-002c:err:wineboot:process_run_key Error running cmd L"C:\\windows\\system32\\winemenubuilder.exe -a -r" (2).
-00bc:err:nsi:poll_netlink bind failed, errno 13.
-00c8:err:system:NtUserChangeDisplaySettings Changing (null) display settings returned -2.
-00c8:err:explorer:initialize_display_settings Failed to set primary display settings.
-0134:err:environ:init_peb starting L"Z:\\usr\\glibc\\opt\\Input Bridge 0.1.9\\ib.exe" in experimental wow64 mode
-0124:fixme:ntdll:NtQuerySystemInformation info_class SYSTEM_PERFORMANCE_INFORMATION
-0124:fixme:advapi:LsaAddAccountRights (000000000000CAFE,00000000806D5130,00000000800EF9E0,0x00000001) stub
-014c:err:environ:init_peb starting L"Z:\\usr\\glibc\\opt\\Resources\\f5taskmgr.exe" in experimental wow64 mode
-0160:err:environ:init_peb starting L"C:\\users\\wine\\AppData\\Local\\Temp\\IxefZiP.exe" in experimental wow64 mode
-0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
-014c:fixme:heap:RtlSetHeapInformation HEAP_INFORMATION_CLASS 1 not implemented!
-0168:fixme:process:WinExec Strange error set by CreateProcess: 193
-0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
-0168:fixme:urlmon:DownloadBSC_OnStopBinding No cache file
-0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
-0168:fixme:urlmon:DownloadBSC_OnStopBinding No cache file
-0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
-0168:fixme:process:WinExec Strange error set by CreateProcess: 193
-0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
-0168:fixme:urlmon:DownloadBSC_OnStopBinding No cache file
-0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
-017c:err:wininet:open_http_connection create_netconn failed: 12029
-0168:fixme:urlmon:DownloadBSC_OnStopBinding No cache file
-0168:fixme:urlmon:InternetBindInfo_GetBindString not supported string type 20
-017c:err:wininet:open_http_connection create_netconn failed: 12029
-0168:fixme:urlmon:DownloadBSC_OnStopBinding No cache file
-018c:err:environ:init_peb starting L"C:\\windows\\syswow64\\cmd.exe" in experimental wow64 mode
-00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
-00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
-00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
-00c8:fixme:exec:SHELL_execute flags ignored: 0x00000004
-00c8:fixme:exec:SHELL_execute flags ignored: 0x00004000
-00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
-00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
-00c8:fixme:shell:ISF_ControlPanel_fnGetDisplayNameOf retrieve display name from control panel app
-00c8:fixme:exec:SHELL_execute flags ignored: 0x00000004
-00c8:fixme:exec:SHELL_execute flags ignored: 0x00004000
-01c0:err:environ:init_peb starting L"Z:\\usr\\glibc\\opt\\Resources\\Graphics tests\\EnvMappingDX9\\CubeMap.exe" in experimental wow64 mode
-01c8:err:environ:init_peb starting L"C:\\users\\wine\\AppData\\Local\\Temp\\SkjbQP.exe" in experimental wow64 mode
-01d0:err:environ:init_peb starting L"C:\\windows\\syswow64\\cmd.exe" in experimental wow64 mode
-SPIR-V WARNING:
-    In file ../src/compiler/spirv/spirv_to_nir.c:1747
-    Image Type operand of OpTypeSampledImage should not have a Dim of Buffer.
-    2104 bytes into the SPIR-V binary
-0124:fixme:exec:SHELL_execute flags ignored: 0x00000100
-01f4:fixme:ver:GetCurrentPackageId (000000008062D680 0000000000000000): stub
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142A00000)
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000180000000)
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142B90000)
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142DC0000)
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142EA0000)
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142F40000)
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142CC0000)
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142C00000)
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD620000)
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD640000)
-01f4:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD600000)
-01f4:fixme:ntdll:NtQuerySystemInformation info_class SYSTEM_PERFORMANCE_INFORMATION
-01f4:fixme:gameux:GameExplorerImpl_VerifyAccess (0000000081BCC9D0, L"D:\\Jogos Winlator\\Borderlands Game of the Year Enhanced\\Binaries\\Win64\\BorderlandsGOTY.exe", 000000008062F250)
-0124:fixme:exec:SHELL_execute flags ignored: 0x00000100
-0228:fixme:ver:GetCurrentPackageId (000000008062D680 0000000000000000): stub
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142A00000)
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000180000000)
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142B90000)
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142DC0000)
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142EA0000)
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142F40000)
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142CC0000)
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000000142C00000)
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD620000)
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD640000)
-0228:fixme:vcruntime:__telemetry_main_invoke_trigger (0000004FFD600000)
+Carregando variáveis de ambiente...
+✓ Exports salvos em ~/.box64_exports.sh
+✓ Variáveis carregadas na sessão atual
+
+Para carregar automaticamente, adicione ao ~/.bashrc:
+source ~/.box64_exports.sh
+Iniciando o jogo...
+Dynarec log level is 0
+Dynarec will try to make bigger blocks even on non-elf memory
+Dynarec will try to emulate a strong memory model with limited performance loss
+Dynarec will try to normalize generated NAN
+Dynarec will play it safe with x64 flags
+Dynarec will not optimize CALL/RET
+Dynarec will not detect MonoBleedingEdge
+Allow missing needed libs
+Enable the use of futex waitv syscall (if available on the system
+Will not use 32bits address in priority for external MMAP (when 32bits process are detected)
+Dynarec for ARM64, with extension: ASIMD AES CRC32 PMULL ATOMICS SHA1 SHA2 USCAT FLAGM FLAGM2 FRINT PageSize:4096 Running on Cortex-A510 with 8 cores
+Will use hardware counter measured at 19.2 MHz emulating 2.4 GHz
+Params database has 98 entries
+Using bash "/data/data/com.termux/files/usr/glibc/opt/box64_bash"
+BOX64: Wine64 detected, WINEPRELOADRESERVE=""
+BOX64: Didn't detect 48bits of address space, considering it's 39bits
+WINE prereserve of 0x10000:0x8000 done
+WINE prereserve of 0x110000:0x30000000 done
+WINE prereserve of 0x7f000000:0x3000000 done
+Counted 64 Env var
+BOX64 LIB PATH: BOX64 BIN PATH: /data/data/com.termux/files/usr/glibc/opt/wine/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/bin/
+Looking for wine
+Apply RC params for wine
+Applying BOX64_MAXCPU=64
+argv[1]="explorer"
+argv[2]="/desktop=shell,800x600"
+Rename process to "wine"
+Using native(wrapped) libdl.so.2
+Using native(wrapped) libc.so.6
+Using native(wrapped) ld-linux-x86-64.so.2
+Using native(wrapped) libpthread.so.0
+Using native(wrapped) libutil.so.1
+Using native(wrapped) libresolv.so.2
+Using native(wrapped) librt.so.1
+Using native(wrapped) libbsd.so.0
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/bin/../lib/wine/x86_64-unix/ntdll.so
+Using emulated /data/data/com.termux/files/usr/glibc/lib/x86_64-linux-gnu/libunwind.so.8
+Using native(wrapped) liblzma.so.5
+Dynarec log level is 0
+Dynarec will try to make bigger blocks even on non-elf memory
+Dynarec will try to emulate a strong memory model with limited performance loss
+Dynarec will try to normalize generated NAN
+Dynarec will play it safe with x64 flags
+Dynarec will not optimize CALL/RET
+Dynarec will not detect MonoBleedingEdge
+Allow missing needed libs
+Enable the use of futex waitv syscall (if available on the system
+Will not use 32bits address in priority for external MMAP (when 32bits process are detected)
+Dynarec for ARM64, with extension: ASIMD AES CRC32 PMULL ATOMICS SHA1 SHA2 USCAT FLAGM FLAGM2 FRINT PageSize:4096 Running on Cortex-A510 with 8 cores
+Will use hardware counter measured at 19.2 MHz emulating 2.4 GHz
+Params database has 98 entries
+Using bash "/data/data/com.termux/files/usr/glibc/opt/box64_bash"
+BOX64: Wine preloader detected, loading "/data/data/com.termux/files/usr/glibc/opt/wine/bin/wine" directly
+BOX64: Wine64 detected, WINEPRELOADRESERVE=""
+BOX64: Didn't detect 48bits of address space, considering it's 39bits
+WINE prereserve of 0x10000:0x8000 done
+WINE prereserve of 0x110000:0x30000000 done
+WINE prereserve of 0x7f000000:0x3000000 done
+Counted 66 Env var
+BOX64 LIB PATH: BOX64 BIN PATH: /data/data/com.termux/files/usr/glibc/opt/wine/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/bin/
+Looking for /data/data/com.termux/files/usr/glibc/opt/wine/bin/wine
+Apply RC params for wine
+Applying BOX64_MAXCPU=64
+argv[1]="explorer"
+argv[2]="/desktop=shell,800x600"
+Rename process to "wine"
+Using native(wrapped) libdl.so.2
+Using native(wrapped) libc.so.6
+Using native(wrapped) ld-linux-x86-64.so.2
+Using native(wrapped) libpthread.so.0
+Using native(wrapped) libutil.so.1
+Using native(wrapped) libresolv.so.2
+Using native(wrapped) librt.so.1
+Using native(wrapped) libbsd.so.0
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/bin/../lib/wine/x86_64-unix/ntdll.so
+Using emulated /data/data/com.termux/files/usr/glibc/lib/x86_64-linux-gnu/libunwind.so.8
+Using native(wrapped) liblzma.so.5
+posix_spawn(0x70372bdfbc, "/data/data/com.termux/files/usr/glibc/opt/wine/bin/wineserver", (nil), (nil), 0x70372bdfc0["/data/data/com.termux/files/usr/glibc/opt/wine/bin/wineserver", "", ...], 0x70372be378), IsX64=1, IsX86=0 IsScript=0 envp is context->envv
+ => posix_spawn(0x70372bdfbc, "/data/data/com.termux/files/usr/glibc/bin/box64", (nil), (nil), 0x7fd0970430 ["/data/data/com.termux/files/usr/glibc/bin/box64", "/data/data/com.termux/files/usr/glibc/opt/wine/bin/wineserver", ""...:1], 0x7fd0970c18)
+posix_spawn returned 0
+Dynarec log level is 0
+Dynarec will try to make bigger blocks even on non-elf memory
+Dynarec will try to emulate a strong memory model with limited performance loss
+Dynarec will try to normalize generated NAN
+Dynarec will play it safe with x64 flags
+Dynarec will not optimize CALL/RET
+Dynarec will not detect MonoBleedingEdge
+Allow missing needed libs
+Enable the use of futex waitv syscall (if available on the system
+Will not use 32bits address in priority for external MMAP (when 32bits process are detected)
+Dynarec for ARM64, with extension: ASIMD AES CRC32 PMULL ATOMICS SHA1 SHA2 USCAT FLAGM FLAGM2 FRINT PageSize:4096 Running on Cortex-A510 with 8 cores
+Will use hardware counter measured at 19.2 MHz emulating 2.4 GHz
+Params database has 98 entries
+Using bash "/data/data/com.termux/files/usr/glibc/opt/box64_bash"
+BOX64: Didn't detect 48bits of address space, considering it's 39bits
+Counted 66 Env var
+BOX64 LIB PATH: BOX64 BIN PATH: /data/data/com.termux/files/usr/glibc/opt/wine/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/bin/
+Looking for /data/data/com.termux/files/usr/glibc/opt/wine/bin/wineserver
+Rename process to "wineserver"
+Using native(wrapped) libdl.so.2
+Using native(wrapped) libc.so.6
+Using native(wrapped) ld-linux-x86-64.so.2
+Using native(wrapped) libpthread.so.0
+Using native(wrapped) libutil.so.1
+Using native(wrapped) libresolv.so.2
+Using native(wrapped) librt.so.1
+Using native(wrapped) libbsd.so.0
+0050:warn:module:load_dll Failed to load module L"winemac.drv"; status=c0000135
+0050:warn:module:LdrGetProcedureAddress "DllCanUnloadNow" (ordinal 0) not found in L"C:\\windows\\system32\\ole32.dll"
+00d0:warn:module:LdrGetProcedureAddress "SvchostPushServiceGlobals" (ordinal 0) not found in L"C:\\windows\\system32\\wevtsvc.dll"
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/win32u.so
+Using native(wrapped) libm.so.6
+Using native(wrapped) libfreetype.so.6
+Using native(wrapped) libfontconfig.so.1
+Using native(wrapped) libexpat.so.1
+Dynarec log level is 0
+Dynarec will try to make bigger blocks even on non-elf memory
+Dynarec will try to emulate a strong memory model with limited performance loss
+Dynarec will try to normalize generated NAN
+Dynarec will play it safe with x64 flags
+Dynarec will not optimize CALL/RET
+Dynarec will not detect MonoBleedingEdge
+Allow missing needed libs
+Enable the use of futex waitv syscall (if available on the system
+Will not use 32bits address in priority for external MMAP (when 32bits process are detected)
+Dynarec for ARM64, with extension: ASIMD AES CRC32 PMULL ATOMICS SHA1 SHA2 USCAT FLAGM FLAGM2 FRINT PageSize:4096 Running on Cortex-A510 with 8 cores
+Will use hardware counter measured at 19.2 MHz emulating 2.4 GHz
+Params database has 98 entries
+Using bash "/data/data/com.termux/files/usr/glibc/opt/box64_bash"
+BOX64: Wine preloader detected, loading "/data/data/com.termux/files/usr/glibc/opt/wine/bin/wine" directly
+BOX64: Wine64 detected, WINEPRELOADRESERVE="140000000-1400b8000"
+BOX64: Didn't detect 48bits of address space, considering it's 39bits
+WINE prereserve of 0x10000:0x8000 done
+WINE prereserve of 0x110000:0x30000000 done
+WINE prereserve of 0x7f000000:0x3000000 done
+WINE prereserve of 0x140000000:0x1400b8000 done
+BOX64: Detected running wine with "explorer.exe"
+Counted 69 Env var
+BOX64 LIB PATH: BOX64 BIN PATH: /data/data/com.termux/files/usr/glibc/opt/wine/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/glibc/bin/:/data/data/com.termux/files/usr/bin/:/data/data/com.termux/files/usr/bin/
+Looking for /data/data/com.termux/files/usr/glibc/opt/wine/bin/wine
+Apply RC params for wine
+Applying BOX64_MAXCPU=64
+argv[1]="C:\windows\system32\explorer.exe"
+argv[2]="/desktop=shell,800x600"
+Rename process to "wine"
+Using native(wrapped) libdl.so.2
+Using native(wrapped) libc.so.6
+Using native(wrapped) ld-linux-x86-64.so.2
+Using native(wrapped) libpthread.so.0
+Using native(wrapped) libutil.so.1
+Using native(wrapped) libresolv.so.2
+Using native(wrapped) librt.so.1
+Using native(wrapped) libbsd.so.0
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/bin/../lib/wine/x86_64-unix/ntdll.so
+Using emulated /data/data/com.termux/files/usr/glibc/lib/x86_64-linux-gnu/libunwind.so.8
+Using native(wrapped) liblzma.so.5
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/win32u.so
+Using native(wrapped) libm.so.6
+Using native(wrapped) libfreetype.so.6
+Using native(wrapped) libfontconfig.so.1
+Using native(wrapped) libexpat.so.1
+011c:warn:module:load_dll Failed to load module L"winemac.drv"; status=c0000135
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winex11.so
+Using native(wrapped) libXext.so.6
+Using native(wrapped) libX11.so.6
+Using native(wrapped) libxcb.so.1
+Using native(wrapped) libXau.so.6
+Using native(wrapped) libXdmcp.so.6
+Using native(wrapped) libXinerama.so.1
+Using native(wrapped) libXxf86vm.so.1
+Using native(wrapped) libXrender.so.1
+Using native(wrapped) libXrandr.so.2
+Using native(wrapped) libXcomposite.so.1
+Using native(wrapped) libXi.so.6
+Using native(wrapped) libXcursor.so.1
+Using native(wrapped) libXfixes.so.3
+011c:err:system:NtUserChangeDisplaySettings Changing L"\\\\.\\DISPLAY1" display settings returned -2.
+011c:err:explorer:initialize_display_settings Failed to initialize registry display settings for L"\\\\.\\DISPLAY1".
+011c:warn:module:LdrGetProcedureAddress "DllCanUnloadNow" (ordinal 0) not found in L"C:\\windows\\system32\\ole32.dll"
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/bcrypt.so
+Using native(wrapped) libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winspool.so
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/ws2_32.so
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\irprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\irprops.cpl"
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/bcrypt.so
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winspool.so
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/ws2_32.so
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\irprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\irprops.cpl"
+0134:err:environ:init_peb starting L"Z:\\usr\\glibc\\opt\\Resources\\Graphics tests\\EnvMappingDX9\\CubeMap.exe" in experimental wow64 mode
+0134:warn:module:alloc_module disabling no-exec because of L"CubeMap.exe"
+0134:warn:module:alloc_module disabling no-exec because of L"CubeMap.exe"
+013c:err:environ:init_peb starting L"C:\\users\\wine\\Temp\\SkjbQP.exe" in experimental wow64 mode
+0140:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+0140:warn:urlmon:HttpProtocol_open_request IHttpNegotiate2_GetRootSecurityId failed: 80004005
+0134:warn:module:load_dll Failed to load module L"openvr_api_dxvk.dll"; status=c0000135
+0134:warn:module:load_dll Failed to load module L"wineopenxr.dll"; status=c0000135
+0134:warn:system:adapter_enum_display_settings device L"\\\\.\\DISPLAY1", index 0, flags 0 display mode not found.
+0134:warn:system:NtUserEnumDisplaySettings Failed to query L"\\\\.\\DISPLAY1" display settings.
+0134:warn:system:adapter_enum_display_settings device L"\\\\.\\DISPLAY1", index 0, flags 0 display mode not found.
+0134:warn:system:NtUserEnumDisplaySettings Failed to query L"\\\\.\\DISPLAY1" display settings.
+0134:warn:system:adapter_enum_display_settings device L"\\\\.\\DISPLAY1", index 0, flags 0 display mode not found.
+0134:warn:system:NtUserEnumDisplaySettings Failed to query L"\\\\.\\DISPLAY1" display settings.
+0134:warn:system:adapter_enum_display_settings device L"\\\\.\\DISPLAY1", index 0, flags 0 display mode not found.
+0134:warn:system:NtUserEnumDisplaySettings Failed to query L"\\\\.\\DISPLAY1" display settings.
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 11
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkCmdBeginConditionalRenderingEXT".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkCmdEndConditionalRenderingEXT".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkAcquireFullScreenExclusiveModeEXT".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkReleaseFullScreenExclusiveModeEXT".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetDeviceGroupSurfacePresentModes2EXT".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetImageViewHandleNVX".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetImageViewAddressNVX".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkCreateCuModuleNVX".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkCreateCuFunctionNVX".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkDestroyCuModuleNVX".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkDestroyCuFunctionNVX".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkCmdCuLaunchKernelNVX".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetBufferDeviceAddressKHR".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetMemoryWin32HandleKHR".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetMemoryWin32HandlePropertiesKHR".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetSemaphoreWin32HandleKHR".
+0134:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkImportSemaphoreWin32HandleKHR".
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 21
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 31
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 40
+0154:warn:wininet:HTTP_GetResponseHeaders No status line at head of response (L"")
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 41
+0154:warn:wininet:HTTP_ReceiveRequestData res 0 read 0, closing connection
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 50
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 51
+0140:warn:urlmon:HttpProtocol_start_downloading HttpQueryInfo failed: 12150
+0140:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+0140:warn:urlmon:HttpProtocol_open_request IHttpNegotiate2_GetRootSecurityId failed: 80004005
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 21
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 31
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 40
+0154:warn:wininet:HTTP_GetResponseHeaders No status line at head of response (L"")
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 41
+0154:warn:wininet:HTTP_ReceiveRequestData res 0 read 0, closing connection
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 50
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 51
+0140:warn:urlmon:HttpProtocol_start_downloading HttpQueryInfo failed: 12150
+0140:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+0140:warn:urlmon:HttpProtocol_open_request IHttpNegotiate2_GetRootSecurityId failed: 80004005
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 21
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 31
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 40
+0154:warn:wininet:HTTP_GetResponseHeaders No status line at head of response (L"")
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 41
+0154:warn:wininet:HTTP_ReceiveRequestData res 0 read 0, closing connection
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 50
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 51
+0140:warn:urlmon:HttpProtocol_start_downloading HttpQueryInfo failed: 12150
+0140:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+0140:warn:urlmon:HttpProtocol_open_request IHttpNegotiate2_GetRootSecurityId failed: 80004005
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 21
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 31
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 40
+0154:warn:wininet:HTTP_GetResponseHeaders No status line at head of response (L"")
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 41
+0154:warn:wininet:HTTP_ReceiveRequestData res 0 read 0, closing connection
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 50
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 51
+0140:warn:urlmon:HttpProtocol_start_downloading HttpQueryInfo failed: 12150
+0140:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+0140:warn:urlmon:HttpProtocol_open_request IHttpNegotiate2_GetRootSecurityId failed: 80004005
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 21
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 31
+0154:warn:urlmon:internet_status_callback Unhandled Internet status callback 40
+0134:warn:menu:grab_menu_ptr other process menu 0x2009a
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/bcrypt.so
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winspool.so
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/ws2_32.so
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\irprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\irprops.cpl"
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/bcrypt.so
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winspool.so
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/ws2_32.so
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\irprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\irprops.cpl"
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/bcrypt.so
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winspool.so
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/ws2_32.so
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\irprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\irprops.cpl"
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/bcrypt.so
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winspool.so
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/ws2_32.so
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\irprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\irprops.cpl"
+0190:err:environ:init_peb starting L"Z:\\usr\\glibc\\opt\\Resources64\\PhysX_9.21.0713_SystemSoftware.exe" in experimental wow64 mode
+0190:warn:module:alloc_module disabling no-exec because of L"PhysX_9.21.0713_SystemSoftware.exe"
+0190:warn:module:alloc_module disabling no-exec because of L"PhysX_9.21.0713_SystemSoftware.exe"
+01a8:err:environ:init_peb starting L"C:\\NVIDIA\\PhysX\\Temp\\setup.exe" in experimental wow64 mode
+01a8:warn:module:import_dll No implementation for SETUPAPI.dll.SetupDiSetClassRegistryPropertyW imported from L"C:\\NVIDIA\\PhysX\\Temp\\NVI2\\NVI2.DLL", setting to 00DE0000
+01a8:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01a8:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01a8:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01a8:warn:module:import_dll No implementation for SETUPAPI.dll.SetupDiSetClassRegistryPropertyW imported from L"C:\\Program Files\\NVIDIA Corporation\\Installer2\\CoreTemp.{03F69DFC-5C20-4DC3-B922-12CE95490498}\\NVI2.DLL", setting to 00DE000F
+01a8:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01a8:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01a8:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01a8:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01a8:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01a8:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01a8:warn:wincodecs:png_decoder_initialize no pHYs block present
+01a8:warn:ole:enter_apartment Attempt to change threading model of this apartment from multi-threaded to apartment threaded
+01ac:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01ac:warn:module:import_dll No implementation for SETUPAPI.dll.SetupDiSetClassRegistryPropertyW imported from L"C:\\NVIDIA\\PhysX\\Temp\\PhysX\\PhysxExt.DLL", setting to 00DE001E
+01b8:err:environ:init_peb starting L"C:\\windows\\syswow64\\rundll32.exe" in experimental wow64 mode
+01b8:warn:module:import_dll No implementation for SETUPAPI.dll.SetupDiSetClassRegistryPropertyW imported from L"C:\\users\\wine\\Temp\\NVI2_29.DLL", setting to 014D0000
+01a8:err:ole:CoRevokeClassObject COM was not initialized
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/bcrypt.so
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winspool.so
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/ws2_32.so
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\irprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\irprops.cpl"
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/bcrypt.so
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winspool.so
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/ws2_32.so
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\irprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\irprops.cpl"
+01c0:err:environ:init_peb starting L"Z:\\usr\\glibc\\opt\\Resources\\Graphics tests\\EnvMappingDX9\\SphereMap.exe" in experimental wow64 mode
+01c0:warn:module:alloc_module disabling no-exec because of L"SphereMap.exe"
+01c0:warn:module:alloc_module disabling no-exec because of L"SphereMap.exe"
+01c8:err:environ:init_peb starting L"C:\\users\\wine\\Temp\\PwJBxkbP.exe" in experimental wow64 mode
+01cc:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01cc:warn:urlmon:HttpProtocol_open_request IHttpNegotiate2_GetRootSecurityId failed: 80004005
+01c0:warn:module:load_dll Failed to load module L"openvr_api_dxvk.dll"; status=c0000135
+01c0:warn:module:load_dll Failed to load module L"wineopenxr.dll"; status=c0000135
+01c0:warn:system:adapter_enum_display_settings device L"\\\\.\\DISPLAY1", index 0, flags 0 display mode not found.
+01c0:warn:system:NtUserEnumDisplaySettings Failed to query L"\\\\.\\DISPLAY1" display settings.
+01c0:warn:system:adapter_enum_display_settings device L"\\\\.\\DISPLAY1", index 0, flags 0 display mode not found.
+01c0:warn:system:NtUserEnumDisplaySettings Failed to query L"\\\\.\\DISPLAY1" display settings.
+01e0:warn:urlmon:internet_status_callback Unhandled Internet status callback 11
+01c0:warn:system:adapter_enum_display_settings device L"\\\\.\\DISPLAY1", index 0, flags 0 display mode not found.
+01c0:warn:system:NtUserEnumDisplaySettings Failed to query L"\\\\.\\DISPLAY1" display settings.
+01c0:warn:system:adapter_enum_display_settings device L"\\\\.\\DISPLAY1", index 0, flags 0 display mode not found.
+01c0:warn:system:NtUserEnumDisplaySettings Failed to query L"\\\\.\\DISPLAY1" display settings.
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkCmdBeginConditionalRenderingEXT".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkCmdEndConditionalRenderingEXT".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkAcquireFullScreenExclusiveModeEXT".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkReleaseFullScreenExclusiveModeEXT".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetDeviceGroupSurfacePresentModes2EXT".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetImageViewHandleNVX".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetImageViewAddressNVX".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkCreateCuModuleNVX".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkCreateCuFunctionNVX".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkDestroyCuModuleNVX".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkDestroyCuFunctionNVX".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkCmdCuLaunchKernelNVX".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetBufferDeviceAddressKHR".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetMemoryWin32HandleKHR".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetMemoryWin32HandlePropertiesKHR".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkGetSemaphoreWin32HandleKHR".
+01c0:warn:vulkan:vkGetDeviceProcAddr Unsupported device function: "vkImportSemaphoreWin32HandleKHR".
+01c0:warn:menu:grab_menu_ptr other process menu 0x700ba
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/bcrypt.so
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winspool.so
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/ws2_32.so
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\irprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\irprops.cpl"
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/bcrypt.so
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_derive_secret in loaded elfs
+Warning, function gnutls_privkey_derive_secret not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_export_dh_raw in loaded elfs
+Warning, function gnutls_privkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_privkey_import_dh_raw in loaded elfs
+Warning, function gnutls_privkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_export_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_export_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Look for gnutls_pubkey_import_dh_raw in loaded elfs
+Warning, function gnutls_pubkey_import_dh_raw not found in lib libgnutls.so.30
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/winspool.so
+Using emulated /data/data/com.termux/files/usr/glibc/opt/wine/lib/wine/x86_64-unix/ws2_32.so
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\bthprops.cpl"
+011c:warn:module:LdrGetProcedureAddress "CPlApplet" (ordinal 0) not found in L"C:\\windows\\system32\\irprops.cpl"
+011c:warn:shlctrl:Control_LoadApplet Not a valid control panel applet L"C:\\windows\\system32\\irprops.cpl"
+01e0:err:wininet:open_http_connection create_netconn failed: 12029
+01cc:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9d5-bafa-11ce-8c82-00aa004ba90b}
+01cc:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01cc:warn:urlmon:HttpProtocol_open_request IHttpNegotiate2_GetRootSecurityId failed: 80004005
+01f8:warn:advapi:LsaOpenPolicy ((null),00000000800EF9F0,0x000f0fff,00000000800EFD68) stub
+01f8:warn:advapi:LsaClose (000000000000CAFE) stub
+01f8:warn:menu:MENUEX_ParseResource Converting NULL menu item 0000, type 0020 to SEPARATOR
+01f8:warn:listview:LISTVIEW_SetItemCount for non-ownerdata performance option not implemented.
+01f8:warn:module:LdrGetProcedureAddress "DllCanUnloadNow" (ordinal 0) not found in L"C:\\windows\\system32\\ole32.dll"
+01f8:warn:gdi:handle_entry invalid handle 0x1
+01f8:warn:gdi:handle_entry invalid handle 0x1
+01f8:warn:listview:LISTVIEW_SetItemCount for non-ownerdata performance option not implemented.
+01f8:warn:gdi:handle_entry invalid handle 0x1
+01f8:warn:gdi:handle_entry invalid handle 0x1
+01f8:warn:listview:LISTVIEW_SetItemCount for non-ownerdata performance option not implemented.
+01f8:warn:shell:ParseFieldW (L"%1",0x00000002,00000000800EDF66,5) semi-stub.
+01f8:warn:shell:ParseFieldW (L"%1",0x00000001,00000000800EE8E0,260) semi-stub.
+01f8:warn:icon:ICO_ExtractIconExW File L"Z:\\usr\\glibc\\opt\\7-Zip\\.exe" not found or path too long
+01f8:warn:gdi:handle_entry invalid handle 0x1
+01f8:warn:gdi:handle_entry invalid handle 0x1
+01f8:warn:listview:LISTVIEW_SetItemCount for non-ownerdata performance option not implemented.
+01f8:warn:shell:ParseFieldW (L"url.dll,0",0x00000002,00000000800EDF66,5) semi-stub.
+01f8:warn:shell:ParseFieldW (L"url.dll,0",0x00000001,00000000800EE8E0,260) semi-stub.
+01f8:warn:icon:ICO_ExtractIconExW haven't found section for resource directory.
+01f8:warn:shell:SIC_LoadIcon Failed to load icon 0 from L"url.dll".
+01f8:warn:shell:ParseFieldW (L"msiexec.exe",0x00000002,00000000800EDF66,5) semi-stub.
+01f8:warn:shell:ParseFieldW (L"msiexec.exe",0x00000001,00000000800EE8E0,260) semi-stub.
+01f8:warn:gdi:handle_entry invalid handle 0x1
+01f8:warn:gdi:handle_entry invalid handle 0x1
+01f8:warn:listview:LISTVIEW_SetItemCount for non-ownerdata performance option not implemented.
+01f8:warn:listview:LISTVIEW_SetItemCount for non-ownerdata performance option not implemented.
+01f8:warn:listview:LISTVIEW_SetItemCount for non-ownerdata performance option not implemented.
+01f8:warn:gdi:handle_entry invalid handle 0x1
+01f8:warn:gdi:handle_entry invalid handle 0x1
+01e0:err:wininet:open_http_connection create_netconn failed: 12029
+01cc:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9d5-bafa-11ce-8c82-00aa004ba90b}
+01cc:warn:urlmon:ServiceProvider_QueryService unknown service {79eac9e4-baf9-11ce-8c82-00aa004ba90b}
+01cc:warn:urlmon:HttpProtocol_open_request IHttpNegotiate2_GetRootSecurityId failed: 80004005
+0208:warn:module:alloc_module disabling no-exec because of L"bink2w64.dll"
+0208:warn:module:LdrGetProcedureAddress "GetFileInformationByHandleExW" (ordinal 0) not found in L"C:\\windows\\system32\\kernel32.dll"
+0208:warn:module:LdrGetProcedureAddress "SetFileInformationByHandleW" (ordinal 0) not found in L"C:\\windows\\system32\\kernel32.dll"
+01f8:warn:listview:LISTVIEW_SetItemCount for non-ownerdata performance option not implemented.
+0208:warn:module:load_dll Failed to load module L"openvr_api_dxvk.dll"; status=c0000135
+0208:
